@@ -366,19 +366,33 @@
     .panel { border:1px solid #dfe4eb; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025); }
     .panel h3 { color:#202b3a; }
     .panel p { color:#596576; }
-    .timeline { display:grid; gap:14px; margin-top:26px; }
-    .timeline:before, .job:before { display:none !important; content:none !important; }
+    /* Work history timeline: blue rail and a marker for each company */
+    .timeline {
+      position:relative; display:grid; gap:24px; margin-top:30px; padding-left:48px;
+    }
+    .timeline:before {
+      content:""; display:block; position:absolute; left:15px; top:20px; bottom:28px;
+      width:2px; background:#0969da; border-radius:2px;
+    }
     .job {
-      display:grid; grid-template-columns:180px minmax(0,1fr); gap:24px; align-items:start;
-      position:relative; padding:22px 24px; margin:0; border:1px solid #dfe4eb; border-radius:10px;
-      background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025);
+      display:block; position:relative; min-width:0;
+      padding:24px 28px; margin:0; border:1px solid #dfe4eb; border-radius:13px;
+      background:#fff; box-shadow:0 3px 12px rgba(31,35,40,.035);
     }
-    .job:last-child { padding-bottom:22px; }
+    .job:last-child { padding-bottom:24px; }
+    .job:before {
+      content:""; display:block; position:absolute; z-index:1;
+      left:-42px; top:27px; width:17px; height:17px; border-radius:50%;
+      background:#0969da; border:4px solid #fff; outline:2px solid #0969da;
+      box-shadow:0 0 0 5px rgba(9,105,218,.10);
+    }
+    .job:first-child:before { box-shadow:0 0 0 6px rgba(9,105,218,.14), 0 0 18px rgba(9,105,218,.16); }
     .date {
-      display:inline-flex; width:fit-content; align-items:center; padding:7px 10px;
-      text-align:left; border-radius:5px; color:#0759b9; background:#eef5ff;
-      font-size:.68rem; font-weight:850; letter-spacing:.08em; line-height:1.4;
+      display:inline-flex; align-items:center; position:absolute; top:23px; right:26px;
+      padding:5px 0; text-align:right; border-radius:0; color:#0969da; background:transparent;
+      font-size:.77rem; font-weight:750; letter-spacing:.035em; line-height:1.4;
     }
+    .job h3 { padding-right:190px; }
     .job h3 { color:#1f2937; font-size:1.16rem; margin:0 0 3px; }
     .job .position { color:#0969da; font-size:.83rem; font-weight:750; margin:3px 0 9px; }
     .job p, .job ul { color:#586576; font-size:.92rem; line-height:1.72; }
@@ -392,8 +406,9 @@
     .activity-card img { min-height:160px; }
     footer { color:#687386; border-top:1px solid #e5e9ef; background:#fff; }
     @media (max-width:900px) {
-      .job { grid-template-columns:1fr; gap:10px; }
-      .date { margin-bottom:2px; }
+      .job { display:block; padding:21px 20px; }
+      .date { position:static; display:block; text-align:left; margin:0 0 8px; padding:0; }
+      .job h3 { padding-right:0; }
       .status-divider { display:none; }
     }
     @media (max-width:620px) {
@@ -402,8 +417,13 @@
       .hero-meta { gap:9px 14px; }
       .hero-actions .button { flex:1 1 42%; }
       section { padding:48px 0; }
-      .job { padding:17px; }
-      .job:last-child { padding-bottom:17px; }
+      .timeline { padding-left:34px; gap:18px; }
+      .timeline:before { left:10px; }
+      .job:before { left:-32px; top:24px; width:15px; height:15px; }
+      .job { padding:18px 16px; }
+      .job:last-child { padding-bottom:18px; }
+      .date { position:static; display:block; text-align:left; margin:0 0 8px; padding:0; }
+      .job h3 { padding-right:0; }
     }
 
   
