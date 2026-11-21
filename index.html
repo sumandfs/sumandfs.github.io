@@ -80,6 +80,14 @@
     .panel { padding: 23px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
     .panel h3 { margin: 0 0 6px; font-size: 1.04rem; }
     .panel p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .tech-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .tech-panel { min-width: 0; }
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); gap: 10px; margin-top: 16px; }
+    .tech-item { min-height: 102px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 12px 8px; border: 1px solid var(--line); border-radius: 11px; background: rgba(7,20,38,.22); text-align: center; }
+    .tech-item img { width: 42px; height: 42px; object-fit: contain; }
+    .tech-item span { color: #d7e7fa; font-size: .78rem; font-weight: 700; line-height: 1.25; }
+    .tech-tags { margin-top: 15px; }
+    @media (max-width: 800px) { .tech-groups { grid-template-columns: 1fr; } }
     .timeline { position: relative; margin-top: 36px; }
     .timeline:before { content: ""; position: absolute; left: 178px; top: 7px; bottom: 12px; width: 1px; background: rgba(103,232,249,.26); }
     .job { display: grid; grid-template-columns: 155px 1fr; gap: 48px; position: relative; padding: 0 0 34px; }
@@ -245,18 +253,59 @@
 
       <section id="skills">
         <div class="section-head">
-          <div class="kicker">03 / Toolkit</div>
-          <h2>Technical skills</h2>
-          <p>Technologies and practices reflected in my professional experience and current résumé.</p>
+          <div class="kicker">03 / Technology stack</div>
+          <h2>Tools I Work With</h2>
+          <p>A visual overview of my core .NET stack, frontend technologies, databases, cloud and engineering tools.</p>
         </div>
-        <div class="skills-grid">
-          <article class="panel"><h3>Languages</h3><div class="tags"><span class="tag">C#</span><span class="tag">VB.NET</span><span class="tag">JavaScript</span><span class="tag">SQL / T-SQL</span></div></article>
-          <article class="panel"><h3>Backend & APIs</h3><div class="tags"><span class="tag">ASP.NET</span><span class="tag">ASP.NET MVC</span><span class="tag">Web API</span><span class="tag">WCF</span><span class="tag">ASMX</span><span class="tag">ADO.NET</span><span class="tag">SOAP / REST</span></div></article>
-          <article class="panel"><h3>Frontend</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">AJAX</span><span class="tag">React.js</span></div></article>
-          <article class="panel"><h3>Database</h3><div class="tags"><span class="tag">SQL Server</span><span class="tag">Stored Procedures</span><span class="tag">Views</span><span class="tag">Query Optimization</span><span class="tag">MySQL · Exposure</span><span class="tag">Oracle · Exposure</span></div></article>
-          <article class="panel"><h3>Cloud & delivery</h3><div class="tags"><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Build Pipelines</span><span class="tag">Deployment Support</span><span class="tag">Microsoft Azure</span><span class="tag">IIS</span></div></article>
-          <article class="panel"><h3>Tools & practices</h3><div class="tags"><span class="tag">Visual Studio</span><span class="tag">SSMS</span><span class="tag">Git</span><span class="tag">TFS</span><span class="tag">SVN</span><span class="tag">Jira</span><span class="tag">ServiceNow</span><span class="tag">Unit Testing</span><span class="tag">UAT</span></div></article>
+
+        <div class="tech-groups">
+          <article class="panel tech-panel">
+            <h3>Core .NET & Backend</h3>
+            <div class="tech-grid">
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/c-sharp.svg" alt="C sharp logo" width="48" height="48" loading="lazy" decoding="async"><span>C#</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/dotnet.svg" alt=".NET logo" width="48" height="48" loading="lazy" decoding="async"><span>.NET</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/aspnetcore.svg" alt="ASP.NET logo" width="48" height="48" loading="lazy" decoding="async"><span>ASP.NET</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/javascript.svg" alt="JavaScript logo" width="48" height="48" loading="lazy" decoding="async"><span>JavaScript</span></div>
+            </div>
+            <div class="tags tech-tags"><span class="tag">ASP.NET MVC</span><span class="tag">Web API</span><span class="tag">WCF</span><span class="tag">ASMX</span><span class="tag">ADO.NET</span><span class="tag">SOAP / REST</span></div>
+          </article>
+
+          <article class="panel tech-panel">
+            <h3>Frontend</h3>
+            <div class="tech-grid">
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/html-5.svg" alt="HTML5 logo" width="48" height="48" loading="lazy" decoding="async"><span>HTML5</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/css-3.svg" alt="CSS3 logo" width="48" height="48" loading="lazy" decoding="async"><span>CSS3</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/bootstrap.svg" alt="Bootstrap logo" width="48" height="48" loading="lazy" decoding="async"><span>Bootstrap</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/jquery.svg" alt="jQuery logo" width="48" height="48" loading="lazy" decoding="async"><span>jQuery</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/react.svg" alt="React logo" width="48" height="48" loading="lazy" decoding="async"><span>React.js</span></div>
+            </div>
+            <div class="tags tech-tags"><span class="tag">JavaScript</span><span class="tag">AJAX</span></div>
+          </article>
+
+          <article class="panel tech-panel">
+            <h3>Database</h3>
+            <div class="tech-grid">
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/microsoft-sql-server.svg" alt="Microsoft SQL Server logo" width="48" height="48" loading="lazy" decoding="async"><span>SQL Server</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/mysql.svg" alt="MySQL logo" width="48" height="48" loading="lazy" decoding="async"><span>MySQL</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/oracle.svg" alt="Oracle logo" width="48" height="48" loading="lazy" decoding="async"><span>Oracle</span></div>
+            </div>
+            <div class="tags tech-tags"><span class="tag">Stored Procedures</span><span class="tag">Views</span><span class="tag">Query Optimization</span><span class="tag">MySQL / Oracle · Exposure</span></div>
+          </article>
+
+          <article class="panel tech-panel">
+            <h3>Cloud, DevOps & Tools</h3>
+            <div class="tech-grid">
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/microsoft-azure.svg" alt="Microsoft Azure logo" width="48" height="48" loading="lazy" decoding="async"><span>Azure</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/azure-devops.svg" alt="Azure DevOps logo" width="48" height="48" loading="lazy" decoding="async"><span>Azure DevOps</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/git.svg" alt="Git logo" width="48" height="48" loading="lazy" decoding="async"><span>Git</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/github.svg" alt="GitHub logo" width="48" height="48" loading="lazy" decoding="async"><span>GitHub</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/visual-studio.svg" alt="Visual Studio logo" width="48" height="48" loading="lazy" decoding="async"><span>Visual Studio</span></div>
+              <div class="tech-item"><img src="https://devicons.io/devicons/icons/visual-studio-code.svg" alt="Visual Studio Code logo" width="48" height="48" loading="lazy" decoding="async"><span>VS Code</span></div>
+            </div>
+            <div class="tags tech-tags"><span class="tag">IIS</span><span class="tag">TFS</span><span class="tag">SVN</span><span class="tag">SSMS</span><span class="tag">Jira</span><span class="tag">ServiceNow</span><span class="tag">CI/CD</span><span class="tag">Unit Testing / UAT</span></div>
+          </article>
         </div>
+        <div class="note">MySQL and Oracle are listed as exposure. React.js is part of my frontend skill set and ongoing practice; my principal professional experience remains in the .NET and SQL Server stack.</div>
       </section>
 
       <section id="projects">
