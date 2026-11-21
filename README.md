@@ -1,27 +1,36 @@
-# Suman Kumar Das — Portfolio
+# Portfolio website source — Suman Kumar Das
 
-Personal portfolio for a Senior .NET Full Stack Developer with 7.8 years of professional experience.
+This repository contains the **HTML, CSS and image assets** used to publish my personal developer portfolio with GitHub Pages. It is the website's source code, not a second GitHub profile.
 
-**Live site:** https://sumandfs.github.io/sumankumardas.github.io/
+## Open the public pages
 
-## Built with
+- **GitHub profile:** https://github.com/sumandfs
+- **Live portfolio:** https://sumandfs.github.io/sumankumardas.github.io/
+- **LinkedIn:** https://www.linkedin.com/in/suman-kumar-das-9866311b6
+
+## About the site
+
+The portfolio presents my professional experience as a Senior .NET Full Stack Developer, including:
+
+- Career timeline and current role at Tata Consultancy Services
+- Selected enterprise project experience
+- Visual technology stack
+- GitHub activity, education and contact information
+
+## Technology
+
 - HTML5
 - CSS3
-- Responsive layouts
+- Responsive layout
+- SVG image assets
 - GitHub Pages
 
-## Sections
-- Professional introduction and career highlights
-- Professional experience
-- Technical skills
-- Selected enterprise project experience
-- Education and contact links
-
 ## Run locally
+
 Open `index.html` in a browser. No build step or package installation is required.
 
-## Publish
-The site is served from the repository's GitHub Pages configuration. Updates to the default branch are published by GitHub Pages.
+## Publishing
 
-## Notes
-Project descriptions are intentionally kept at a high level to avoid disclosing client-confidential implementation details. React.js and other learning topics are presented as skills/current learning, not misrepresented as work on the listed enterprise projects.
+The site is published from this repository through GitHub Pages. Updates committed to the publishing source are deployed by GitHub Pages.
+
+Project information is intentionally summarized to avoid exposing client-confidential implementation details. React.js and current learning topics are distinguished from my core professional .NET experience.
