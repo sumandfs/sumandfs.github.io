@@ -300,6 +300,112 @@
       .activity-card { padding: 7px; }
     }
 
+  
+    /* Final visual polish: profile-README inspired header and clean work history */
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --panel: #ffffff;
+      --panel-2: #f6f8fa;
+      --line: #d8dee7;
+      --text: #1f2328;
+      --muted: #57606a;
+      --blue: #0969da;
+      --cyan: #0969da;
+      --white: #1f2328;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: #fff; color: #1f2328; font-family: Inter, "Segoe UI", Arial, sans-serif; }
+    .topbar { background: rgba(255,255,255,.96); border-bottom: 1px solid #d8dee7; box-shadow: 0 1px 2px rgba(31,35,40,.03); }
+    .nav { min-height: 62px; }
+    .nav-links a { color: #485465; font-weight: 700; font-size: .88rem; }
+    .nav-links a:hover { color: #0969da; }
+    .hero {
+      padding: 62px 0 28px;
+      background: #fff;
+      border-bottom: 0;
+    }
+    .hero:after { display: none; }
+    .hero-grid { max-width: 1180px; }
+    .hero-main { width: 100%; }
+    .eyebrow { color: #0969da; font-size: .72rem; letter-spacing: .19em; font-weight: 800; }
+    .hero h1 {
+      margin: 15px 0 12px; color: #1f2328; font-size: clamp(2.6rem,5.5vw,4.55rem);
+      line-height: 1.04; letter-spacing: -.045em; font-weight: 850;
+    }
+    .hero-rule { width: 100%; height: 1px; background: #d8dee7; margin: 18px 0 17px; }
+    .hero .role { color: #303b4b; font-size: 1.06rem; font-weight: 750; margin: 0 0 12px; }
+    .hero-copy { max-width: 940px; color: #57606a; font-size: 1rem; line-height: 1.75; margin: 0 0 16px; }
+    .hero-meta { display:flex; flex-wrap:wrap; gap:12px 24px; margin: 0 0 22px; color:#687386; font-size:.67rem; font-weight:800; letter-spacing:.16em; }
+    .actions.hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; }
+    .hero-actions .button {
+      min-height:40px; padding:9px 17px; border:1px solid #c9d1dc; border-radius:5px;
+      background:#fff; color:#263445; font-size:.74rem; letter-spacing:.13em; font-weight:800;
+      box-shadow:0 1px 1px rgba(31,35,40,.03); transition:background .15s ease,border-color .15s ease,transform .15s ease;
+    }
+    .hero-actions .button:hover { background:#f6f8fa; border-color:#0969da; color:#0969da; transform:translateY(-1px); text-decoration:none; }
+    .hero-actions .button.primary { color:#fff; background:#0969da; border-color:#0969da; }
+    .hero-actions .button.primary:hover { background:#0759b9; color:#fff; }
+    .status-strip {
+      display:flex; align-items:center; flex-wrap:wrap; gap:9px 13px;
+      margin-top:23px; padding:12px 14px; border-top:1px solid #d8dee7; border-bottom:1px solid #d8dee7;
+      background:#f6f8fa; color:#404b5a; font-size:.78rem;
+    }
+    .status-dot { width:8px; height:8px; border-radius:50%; background:#1a9b63; box-shadow:0 0 0 3px #dcfce7; }
+    .status-label { color:#718096; font-size:.62rem; font-weight:850; letter-spacing:.14em; }
+    .status-strip strong { color:#253246; font-size:.78rem; font-weight:700; }
+    .status-divider { height:18px; width:1px; background:#d8dee7; margin:0 5px; }
+    main .stats { border-top:0; border-bottom:1px solid #d8dee7; background:#fff; }
+    .stat strong { color:#1f2328; }
+    .stat span { color:#657184; }
+    section { padding:64px 0; border-bottom:1px solid #e5e9ef; }
+    .section-head { max-width:850px; margin-bottom:26px; }
+    .kicker { color:#0969da; font-size:.69rem; letter-spacing:.17em; }
+    .section-head h2 { color:#1f2328; font-size:clamp(1.8rem,3vw,2.4rem); }
+    .section-head p { color:#5c6675; line-height:1.75; }
+    .panel { border:1px solid #dfe4eb; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025); }
+    .panel h3 { color:#202b3a; }
+    .panel p { color:#596576; }
+    .timeline { display:grid; gap:14px; margin-top:26px; }
+    .timeline:before, .job:before { display:none !important; content:none !important; }
+    .job {
+      display:grid; grid-template-columns:180px minmax(0,1fr); gap:24px; align-items:start;
+      position:relative; padding:22px 24px; margin:0; border:1px solid #dfe4eb; border-radius:10px;
+      background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025);
+    }
+    .job:last-child { padding-bottom:22px; }
+    .date {
+      display:inline-flex; width:fit-content; align-items:center; padding:7px 10px;
+      text-align:left; border-radius:5px; color:#0759b9; background:#eef5ff;
+      font-size:.68rem; font-weight:850; letter-spacing:.08em; line-height:1.4;
+    }
+    .job h3 { color:#1f2937; font-size:1.16rem; margin:0 0 3px; }
+    .job .position { color:#0969da; font-size:.83rem; font-weight:750; margin:3px 0 9px; }
+    .job p, .job ul { color:#586576; font-size:.92rem; line-height:1.72; }
+    .job li { margin:5px 0; }
+    .tag { border:1px solid #d8e0ea; background:#f6f8fa; color:#344256; border-radius:5px; padding:6px 9px; font-size:.76rem; font-weight:650; }
+    .project .project-type { color:#0969da; }
+    .project p, .education p, .contact-card p { color:#586576; }
+    .note { border-left-color:#0969da; background:#f1f6fd; color:#586576; }
+    .contact-card { background:#f6f8fa; border-color:#dfe4eb; }
+    .activity-card { padding:14px; border:1px solid #dfe4eb; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025); }
+    .activity-card img { min-height:160px; }
+    footer { color:#687386; border-top:1px solid #e5e9ef; background:#fff; }
+    @media (max-width:900px) {
+      .job { grid-template-columns:1fr; gap:10px; }
+      .date { margin-bottom:2px; }
+      .status-divider { display:none; }
+    }
+    @media (max-width:620px) {
+      .hero { padding:38px 0 20px; }
+      .hero h1 { font-size:clamp(2.25rem,11vw,3.2rem); }
+      .hero-meta { gap:9px 14px; }
+      .hero-actions .button { flex:1 1 42%; }
+      section { padding:48px 0; }
+      .job { padding:17px; }
+      .job:last-child { padding-bottom:17px; }
+    }
+
   </style>
 </head>
 <body>
@@ -337,15 +443,27 @@
 
   <header class="hero" id="top">
     <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">Software Engineering Portfolio · Bengaluru, India</div>
-        <h1>Suman Kumar<br>Das</h1>
-        <div class="role">Senior .NET Full Stack Developer</div>
-        <p class="hero-copy">I build and support enterprise web applications, backend services and business-critical integrations. My work focuses on C#, ASP.NET, Web API, WCF/ASMX, SQL Server and dependable delivery from development through production.</p>
-        <div class="actions">
-          <a class="button primary" href="mailto:dassumandas1991@gmail.com?subject=Request%20for%20resume">Request résumé ↗</a>
-          <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub ↗</a>
+      <div class="hero-main">
+        <div class="eyebrow">Senior .NET Full Stack Developer · Bengaluru, India</div>
+        <h1>SUMAN KUMAR DAS</h1>
+        <div class="hero-rule"></div>
+        <div class="role">Enterprise Applications · Backend Engineering · System Integration</div>
+        <p class="hero-copy">I build and support business-critical web applications using C#, ASP.NET, Web API and SQL Server. Across 7.8 years, I have contributed to enterprise, manufacturing, predictive-analytics and public-sector platforms — from application development and system integration to production support.</p>
+        <div class="hero-meta">
+          <span>BENGALURU, INDIA</span><span>7.8 YEARS EXPERIENCE</span><span>TATA CONSULTANCY SERVICES</span>
+        </div>
+        <div class="actions hero-actions">
+          <a class="button primary" href="#projects">PORTFOLIO</a>
+          <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LINKEDIN</a>
+          <a class="button" href="#skills">TECH STACK</a>
+          <a class="button" href="mailto:dassumandas1991@gmail.com?subject=Request%20for%20resume">RÉSUMÉ</a>
+          <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GITHUB</a>
+          <a class="button" href="#about">PROFILE</a>
+        </div>
+        <div class="status-strip">
+          <span class="status-dot"></span><span class="status-label">CURRENT ROLE</span><strong>System Engineer · TCS</strong>
+          <span class="status-divider"></span><span class="status-label">CORE STACK</span><strong>C# · ASP.NET · SQL Server</strong>
+          <span class="status-divider"></span><span class="status-label">FOCUS</span><strong>Enterprise Integration</strong>
         </div>
       </div>
     </div>
@@ -513,7 +631,7 @@
           <p>Recent public contribution activity from my GitHub profile.</p>
         </div>
         <div class="activity-card">
-          <img src="https://github-readme-activity-graph.ashutosh-dwivedi0710.workers.dev/graph?username=sumandfs&amp;theme=github-compact&amp;bg_color=ffffff&amp;color=334155&amp;line=2563eb&amp;point=0f766e&amp;area=true&amp;hide_border=true&amp;radius=8&amp;height=280&amp;days=30" alt="GitHub contribution activity graph for sumandfs over the last 30 days" loading="lazy" decoding="async">
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=sumandfs&amp;bg_color=ffffff&amp;color=24292f&amp;line=0969da&amp;point=0969da&amp;area=true&amp;hide_border=true&amp;radius=8" alt="GitHub contribution activity graph for sumandfs" loading="lazy" decoding="async">
         </div>
         <p class="activity-link"><a href="https://github.com/sumandfs" target="_blank" rel="noopener">View my GitHub profile and contributions ↗</a></p>
       </section>
