@@ -380,13 +380,17 @@
       background:#fff; box-shadow:0 3px 12px rgba(31,35,40,.035);
     }
     .job:last-child { padding-bottom:24px; }
+    /* Past roles use simple dots; only the current role is highlighted. */
     .job:before {
       content:""; display:block; position:absolute; z-index:1;
-      left:-42px; top:27px; width:17px; height:17px; border-radius:50%;
-      background:#0969da; border:4px solid #fff; outline:2px solid #0969da;
-      box-shadow:0 0 0 5px rgba(9,105,218,.10);
+      left:-39px; top:32px; width:12px; height:12px; border-radius:50%;
+      background:#0969da; border:0; outline:0; box-shadow:none;
     }
-    .job:first-child:before { box-shadow:0 0 0 6px rgba(9,105,218,.14), 0 0 18px rgba(9,105,218,.16); }
+    .job:first-child:before {
+      left:-42px; top:27px; width:18px; height:18px;
+      background:#fff; border:5px solid #0969da; outline:3px solid #dbeafe;
+      box-shadow:0 0 0 6px rgba(9,105,218,.12), 0 0 18px rgba(9,105,218,.14);
+    }
     .date {
       display:inline-flex; align-items:center; position:absolute; top:23px; right:26px;
       padding:5px 0; text-align:right; border-radius:0; color:#0969da; background:transparent;
@@ -419,7 +423,8 @@
       section { padding:48px 0; }
       .timeline { padding-left:34px; gap:18px; }
       .timeline:before { left:10px; }
-      .job:before { left:-32px; top:24px; width:15px; height:15px; }
+      .job:before { left:-29px; top:29px; width:11px; height:11px; }
+      .job:first-child:before { left:-32px; top:24px; width:17px; height:17px; }
       .job { padding:18px 16px; }
       .job:last-child { padding-bottom:18px; }
       .date { position:static; display:block; text-align:left; margin:0 0 8px; padding:0; }
@@ -452,11 +457,10 @@
       <div class="sidebar-profile">
         <img class="sidebar-photo" src="assets/profile/suman-kumar-das.jpg" alt="Portrait of Suman Kumar Das" width="180" height="180">
         <h2>Suman Kumar Das</h2>
-        <p class="sidebar-handle">sumandfs</p>
         <p class="sidebar-role">Senior .NET Full Stack Developer</p>
         <p class="sidebar-summary">7.8 years of experience building enterprise web applications, backend services and business-critical integrations.</p>
         <div class="sidebar-meta">
-          <div><span>Company</span><strong>Tata Consultancy Services</strong></div>
+          <div><span>Present company</span><strong>Tata Consultancy Services</strong></div>
           <div><span>Location</span><strong>Bengaluru, India</strong></div>
           <div><span>Email</span><a href="mailto:dassumandas1991@gmail.com">dassumandas1991@gmail.com</a></div>
         </div>
