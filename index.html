@@ -239,16 +239,98 @@
       .tech-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
     }
 
+  
+    /* Interview-ready two-column layout with a fixed profile rail */
+    .site-layout { min-height: 100vh; display: grid; grid-template-columns: 310px minmax(0, 1fr); }
+    .profile-sidebar {
+      position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
+      padding: 34px 22px 28px; background: #fff; border-right: 1px solid #dfe5ed;
+    }
+    .sidebar-profile { width: 100%; max-width: 260px; margin: 0 auto; }
+    .sidebar-photo {
+      display: block; width: 180px; height: 180px; margin: 0 auto 22px;
+      border-radius: 50%; object-fit: cover; object-position: center;
+      border: 1px solid #dce3ec; box-shadow: 0 8px 24px rgba(15,23,42,.07);
+      background: #fff;
+    }
+    .sidebar-profile h2 { margin: 0; color: #172334; font-size: 1.5rem; line-height: 1.25; letter-spacing: -.035em; }
+    .sidebar-handle { color: #64748b; font-size: .92rem; margin: 4px 0 17px; }
+    .sidebar-role { color: #172334 !important; font-size: 1rem !important; font-weight: 800; line-height: 1.45; margin: 0 0 11px !important; }
+    .sidebar-summary { color: #526176 !important; font-size: .9rem !important; line-height: 1.65; margin: 0 0 19px !important; }
+    .sidebar-meta { border-top: 1px solid #dfe5ed; padding-top: 12px; }
+    .sidebar-meta > div { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 8px 0; }
+    .sidebar-meta span { color: #64748b; font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .sidebar-meta strong, .sidebar-meta a { color: #243449; font-size: .86rem; font-weight: 650; overflow-wrap: anywhere; }
+    .sidebar-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .sidebar-actions .button { min-height: 38px; padding: 8px 11px; font-size: .8rem; }
+    .site-content { min-width: 0; }
+    .nav { justify-content: flex-end; }
+    .nav-links { gap: clamp(12px, 1.6vw, 23px); }
+    .hero { padding: 70px 0 62px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); max-width: 850px; }
+    .hero h1 { color: #172334; }
+    .activity-card {
+      padding: 14px; background: #fff; border: 1px solid #dfe5ed;
+      border-radius: 12px; box-shadow: 0 5px 18px rgba(15,23,42,.035);
+    }
+    .activity-card img { display: block; width: 100%; height: auto; min-height: 180px; object-fit: contain; }
+    .activity-link { margin: 11px 0 0; color: #64748b; font-size: .84rem; }
+    .activity-link a { color: #2563eb; font-weight: 700; }
+    @media (max-width: 1050px) {
+      .site-layout { grid-template-columns: 280px minmax(0,1fr); }
+      .profile-sidebar { padding-inline: 18px; }
+      .sidebar-photo { width: 160px; height: 160px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .8rem; }
+    }
+    @media (max-width: 820px) {
+      .site-layout { display: block; }
+      .profile-sidebar { position: relative; height: auto; overflow: visible; padding: 26px 20px 22px; border-right: 0; border-bottom: 1px solid #dfe5ed; }
+      .sidebar-profile { max-width: 520px; text-align: center; }
+      .sidebar-photo { width: 150px; height: 150px; margin-bottom: 13px; }
+      .sidebar-meta { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 14px; text-align: left; }
+      .sidebar-actions { justify-content: center; }
+      .nav { align-items: center; flex-direction: row; min-height: 60px; padding: 10px 0; }
+      .nav-links { justify-content: center; flex-wrap: wrap; }
+      .hero { padding: 48px 0; }
+    }
+    @media (max-width: 520px) {
+      .sidebar-meta { grid-template-columns: 1fr; }
+      .nav-links a { font-size: .76rem; }
+      .activity-card { padding: 7px; }
+    }
+
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-layout">
+    <aside class="profile-sidebar" aria-label="Profile">
+      <div class="sidebar-profile">
+        <img class="sidebar-photo" src="assets/profile/suman-kumar-das.jpg" alt="Portrait of Suman Kumar Das" width="180" height="180">
+        <h2>Suman Kumar Das</h2>
+        <p class="sidebar-handle">sumandfs</p>
+        <p class="sidebar-role">Senior .NET Full Stack Developer</p>
+        <p class="sidebar-summary">7.8 years of experience building enterprise web applications, backend services and business-critical integrations.</p>
+        <div class="sidebar-meta">
+          <div><span>Company</span><strong>Tata Consultancy Services</strong></div>
+          <div><span>Location</span><strong>Bengaluru, India</strong></div>
+          <div><span>Email</span><a href="mailto:dassumandas1991@gmail.com">dassumandas1991@gmail.com</a></div>
+        </div>
+        <div class="sidebar-actions">
+          <a class="button primary" href="mailto:dassumandas1991@gmail.com?subject=Request%20for%20resume">Request résumé</a>
+          <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </aside>
+    <div class="site-content">
   <div class="topbar">
     <div class="wrap nav">
-      <a class="brand" href="#top">SKD<span>.</span></a>
+      
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-        <a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+        <a href="#projects">Projects</a><a href="#activity">Activity</a><a href="#education">Education</a><a href="#contact">Contact</a>
       </nav>
     </div>
   </div>
@@ -257,25 +339,15 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">Software Engineering Portfolio · Bengaluru, India</div>
-        <h1>Suman Kumar<br>Das<span style="color:var(--cyan)">.</span></h1>
+        <h1>Suman Kumar<br>Das</h1>
         <div class="role">Senior .NET Full Stack Developer</div>
-        <p class="hero-copy">I build and support enterprise web applications with a focus on C#, ASP.NET, Web API, system integration and SQL Server. My experience spans business-critical platforms, data integration, production troubleshooting and delivery workflows.</p>
+        <p class="hero-copy">I build and support enterprise web applications, backend services and business-critical integrations. My work focuses on C#, ASP.NET, Web API, WCF/ASMX, SQL Server and dependable delivery from development through production.</p>
         <div class="actions">
           <a class="button primary" href="mailto:dassumandas1991@gmail.com?subject=Request%20for%20resume">Request résumé ↗</a>
           <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
-      <aside class="profile-card" aria-label="Professional summary">
-        <div class="monogram" aria-hidden="true">SKD</div>
-        <h2>Professional snapshot</h2>
-        <p class="sub">Enterprise .NET development</p>
-        <div class="fact"><span>Current organization</span><strong>TCS</strong></div>
-        <div class="fact"><span>Current role</span><strong>System Engineer</strong></div>
-        <div class="fact"><span>Experience</span><strong>7.8 years</strong></div>
-        <div class="fact"><span>Core database</span><strong>SQL Server</strong></div>
-        <div class="fact"><span>Delivery tools</span><strong>Azure DevOps · Git</strong></div>
-      </aside>
     </div>
   </header>
 
@@ -434,6 +506,18 @@
         </div>
         <div class="note">Alongside professional work, I maintain a separate <a href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener">JavaScript practice repository</a> for fundamentals and coding exercises. It is a learning repository, not a client project.</div>
       </section>
+      <section id="activity">
+        <div class="section-head">
+          <div class="kicker">05 / GitHub activity</div>
+          <h2>Activity</h2>
+          <p>Recent public contribution activity from my GitHub profile.</p>
+        </div>
+        <div class="activity-card">
+          <img src="https://github-readme-activity-graph.ashutosh-dwivedi0710.workers.dev/graph?username=sumandfs&amp;theme=github-compact&amp;bg_color=ffffff&amp;color=334155&amp;line=2563eb&amp;point=0f766e&amp;area=true&amp;hide_border=true&amp;radius=8&amp;height=280&amp;days=30" alt="GitHub contribution activity graph for sumandfs over the last 30 days" loading="lazy" decoding="async">
+        </div>
+        <p class="activity-link"><a href="https://github.com/sumandfs" target="_blank" rel="noopener">View my GitHub profile and contributions ↗</a></p>
+      </section>
+
 
       <section id="education">
         <div class="section-head">
@@ -471,5 +555,7 @@
     </div>
   </main>
   <footer><div class="wrap">© 2026 Suman Kumar Das · Built with HTML and CSS · Hosted on GitHub Pages</div></footer>
+    </div>
+  </div>
 </body>
 </html>
