@@ -2,186 +2,352 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Suman Kumar Das - Senior .NET Full Stack Developer portfolio, professional experience, skills and projects.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="Suman Kumar Das — Senior .NET Full Stack Developer with 7.8 years of experience in C#, ASP.NET MVC, Web API, SQL Server, WCF/ASMX and Azure DevOps.">
   <title>Suman Kumar Das | Senior .NET Full Stack Developer</title>
   <style>
     :root {
-      --blue: #2563eb; --navy: #0f172a; --muted: #64748b;
-      --line: #dbe2ea; --surface: #f8fafc; --white: #fff;
+      color-scheme: dark;
+      --bg: #071426;
+      --bg-soft: #0b1c33;
+      --panel: #10243e;
+      --panel-2: #132a47;
+      --line: rgba(166, 190, 219, .16);
+      --text: #edf4ff;
+      --muted: #a8bbd3;
+      --blue: #60a5fa;
+      --cyan: #67e8f9;
+      --white: #fff;
+      --max: 1120px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--navy); background: #fff;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; line-height: 1.65; }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { width: min(1080px, calc(100% - 40px)); margin: auto; }
-    header { padding: 76px 0 62px; background: linear-gradient(135deg,#eff6ff,#fff 65%); border-bottom: 1px solid var(--line); }
-    .eyebrow { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-    h1 { margin: 12px 0 6px; font-size: clamp(2.3rem,6vw,4rem); line-height: 1.1; letter-spacing: -.045em; }
-    .role { font-size: clamp(1.05rem,2vw,1.35rem); color: #334155; font-weight: 650; }
-    .intro { max-width: 720px; color: var(--muted); font-size: 1.05rem; margin: 18px 0 25px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 4px; }
+    a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; left: -999px; top: 8px; z-index: 20; background: var(--white); color: var(--bg); padding: 8px 12px; }
+    .skip-link:focus { left: 12px; }
+    .wrap { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(7, 20, 38, .88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 70px; }
+    .brand { color: var(--text); font-weight: 850; letter-spacing: .04em; font-size: .94rem; }
+    .brand span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 23px; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: .86rem; font-weight: 650; }
+    .nav-links a:hover { color: var(--white); text-decoration: none; }
+    .hero {
+      position: relative; overflow: hidden; padding: 104px 0 86px;
+      background: radial-gradient(ellipse at 82% 16%, rgba(37, 99, 235, .24), transparent 38%),
+                  radial-gradient(ellipse at 10% 0%, rgba(8, 145, 178, .14), transparent 36%),
+                  linear-gradient(145deg, #071426, #0a1b31 62%, #0a2039);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero:after { content: ""; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(103,232,249,.09); border-radius: 50%; right: -180px; bottom: -290px; box-shadow: 0 0 0 42px rgba(103,232,249,.025), 0 0 0 90px rgba(103,232,249,.02); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .8fr); gap: 58px; align-items: center; position: relative; z-index: 1; }
+    .eyebrow, .kicker { color: var(--cyan); font-weight: 800; text-transform: uppercase; letter-spacing: .17em; font-size: .73rem; }
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.055em; margin: 15px 0 13px; }
+    .role { color: #cbdcf1; font-weight: 650; font-size: clamp(1.08rem, 2vw, 1.38rem); }
+    .hero-copy { max-width: 680px; color: var(--muted); margin: 22px 0 27px; font-size: 1.04rem; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px;
-      border-radius: 8px; font-weight: 700; border: 1px solid var(--blue); }
-    .btn.primary { color: white; background: var(--blue); }
-    .btn.secondary { color: var(--blue); background: white; }
-    nav { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 5; }
-    nav .container { display: flex; flex-wrap: wrap; gap: 22px; padding: 13px 0; }
-    nav a { color: #475569; font-size: .9rem; font-weight: 650; }
-    section { padding: 58px 0; border-bottom: 1px solid var(--line); }
-    h2 { margin: 0 0 24px; font-size: 1.8rem; letter-spacing: -.025em; }
-    h3 { margin: 0 0 5px; font-size: 1.15rem; }
-    .section-lead { color: var(--muted); max-width: 780px; margin-top: -12px; }
-    .about-grid, .project-grid, .skill-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
-    .card { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); }
-    .card p { color: var(--muted); margin: 7px 0 0; }
-    .timeline { position: relative; margin-top: 32px; }
-    .timeline:before { content: ""; position: absolute; left: 230px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
-    .job { display: grid; grid-template-columns: 205px 1fr; gap: 52px; position: relative; padding: 0 0 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 11px 17px; min-height: 46px; border: 1px solid rgba(103,232,249,.45); border-radius: 9px; color: var(--text); font-size: .9rem; font-weight: 750; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); text-decoration: none; background: rgba(96,165,250,.12); }
+    .button.primary { color: #061629; background: var(--cyan); border-color: var(--cyan); }
+    .button.primary:hover { background: #a5f3fc; color: #061629; }
+    .profile-card { padding: 26px; border: 1px solid rgba(147,197,253,.23); border-radius: 18px; background: linear-gradient(150deg, rgba(19,42,71,.92), rgba(10,29,51,.92)); box-shadow: 0 22px 70px rgba(0,0,0,.2); }
+    .monogram { display: grid; place-items: center; width: 74px; height: 74px; border-radius: 20px; color: #061629; background: linear-gradient(135deg, var(--cyan), var(--blue)); font-size: 1.5rem; font-weight: 900; letter-spacing: -.05em; }
+    .profile-card h2 { margin: 18px 0 2px; font-size: 1.2rem; }
+    .profile-card .sub { color: var(--muted); font-size: .9rem; margin: 0 0 19px; }
+    .fact { display: flex; justify-content: space-between; gap: 14px; border-top: 1px solid var(--line); padding: 10px 0; font-size: .87rem; }
+    .fact span:first-child { color: var(--muted); }
+    .fact strong { text-align: right; font-weight: 700; }
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: -1px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .stat { padding: 8px 18px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat strong { display: block; color: var(--white); font-size: 1.7rem; line-height: 1.25; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: .78rem; }
+    section { padding: 78px 0; border-bottom: 1px solid var(--line); }
+    .section-head { max-width: 740px; margin-bottom: 30px; }
+    .section-head h2 { margin: 7px 0 7px; font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1.2; letter-spacing: -.04em; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .about-grid, .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; }
+    .panel { padding: 23px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+    .panel h3 { margin: 0 0 6px; font-size: 1.04rem; }
+    .panel p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .timeline { position: relative; margin-top: 36px; }
+    .timeline:before { content: ""; position: absolute; left: 178px; top: 7px; bottom: 12px; width: 1px; background: rgba(103,232,249,.26); }
+    .job { display: grid; grid-template-columns: 155px 1fr; gap: 48px; position: relative; padding: 0 0 34px; }
     .job:last-child { padding-bottom: 0; }
-    .job:before { content: ""; position: absolute; left: 223px; top: 6px; width: 12px; height: 12px; border-radius: 50%;
-      background: white; border: 2px solid #94a3b8; z-index: 1; }
-    .job.current:before { background: var(--blue); border-color: var(--blue); }
-    .date { text-align: right; color: var(--muted); font-size: .78rem; letter-spacing: .09em; font-weight: 750; padding-top: 2px; }
-    .company { font-size: 1.28rem; font-weight: 750; line-height: 1.25; }
-    .position { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 7px 0; }
-    .job p, .job ul { color: var(--muted); margin: 6px 0 0; }
-    .job ul { padding-left: 19px; }
-    .tag-wrap { display: flex; flex-wrap: wrap; gap: 9px; }
-    .tag { padding: 7px 11px; border-radius: 6px; background: #eff6ff; color: #1d4ed8; font-size: .88rem; font-weight: 650; }
-    .project-card { min-height: 170px; }
-    .project-stack { color: var(--blue) !important; font-size: .82rem; font-weight: 750; }
-    footer { padding: 30px 0; color: var(--muted); text-align: center; font-size: .9rem; }
-    @media (max-width: 700px) {
-      header { padding: 54px 0 44px; }
-      .about-grid, .project-grid, .skill-grid { grid-template-columns: 1fr; }
-      .timeline:before { left: 7px; }
-      .job { display: block; padding: 0 0 30px 32px; }
+    .job:before { content: ""; position: absolute; left: 172px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--cyan); }
+    .date { color: var(--cyan); text-align: right; font-size: .76rem; font-weight: 800; letter-spacing: .08em; padding-top: 1px; }
+    .job h3 { margin: 0; font-size: 1.18rem; }
+    .job .position { color: var(--blue); font-size: .83rem; font-weight: 750; margin: 2px 0 8px; }
+    .job p, .job ul { margin: 5px 0 0; color: var(--muted); font-size: .91rem; }
+    .job ul { padding-left: 20px; }
+    .job li { margin: 4px 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+    .tag { padding: 6px 10px; border-radius: 7px; border: 1px solid rgba(96,165,250,.22); background: rgba(96,165,250,.09); color: #cfe3ff; font-size: .8rem; font-weight: 650; }
+    .project { min-height: 205px; display: flex; flex-direction: column; }
+    .project .project-type { color: var(--cyan); font-size: .72rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .project h3 { margin: 10px 0 6px; font-size: 1.12rem; }
+    .project p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .project .stack { color: #c6d9f1; font-size: .8rem; font-weight: 650; margin-top: auto; padding-top: 17px; }
+    .note { padding: 16px 19px; margin-top: 18px; border-left: 3px solid var(--cyan); background: rgba(8,145,178,.08); border-radius: 0 9px 9px 0; color: var(--muted); font-size: .88rem; }
+    .education { display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: 20px; }
+    .education h3 { margin: 0 0 5px; }
+    .education p { margin: 0; color: var(--muted); }
+    .education .year { color: var(--cyan); font-weight: 800; white-space: nowrap; }
+    .contact-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; padding: 28px; border-radius: 16px; border: 1px solid rgba(103,232,249,.2); background: linear-gradient(120deg, rgba(19,42,71,.95), rgba(10,29,51,.95)); }
+    .contact-card h3 { margin: 0 0 4px; font-size: 1.3rem; }
+    .contact-card p { margin: 0; color: var(--muted); }
+    footer { padding: 28px 0 36px; text-align: center; color: #8196b1; font-size: .82rem; }
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+      .profile-card { max-width: 480px; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 18px; }
+      .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 12px 0; gap: 5px; }
+      .nav-links { gap: 13px; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 32px, var(--max)); }
+      .hero { padding: 70px 0 58px; }
+      section { padding: 58px 0; }
+      .about-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .timeline:before { left: 6px; }
+      .job { display: block; padding: 0 0 29px 28px; }
       .job:before { left: 0; }
-      .date { text-align: left; margin-bottom: 7px; }
-      nav .container { gap: 14px; }
+      .date { text-align: left; margin-bottom: 5px; }
+      .stats { gap: 0; }
+      .stat { padding-inline: 10px; }
+      .stat strong { font-size: 1.45rem; }
+      .contact-card { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="eyebrow">Software Engineering Portfolio</div>
-      <h1>Suman Kumar Das</h1>
-      <div class="role">Senior .NET Full Stack Developer</div>
-      <p class="intro">Enterprise application development, backend engineering, REST APIs, SQL Server integration and modern web development. Currently working at Tata Consultancy Services in Bengaluru, India.</p>
-      <div class="actions">
-        <a class="btn primary" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener">Download Resume ↗</a>
-        <a class="btn secondary" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn secondary" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn secondary" href="mailto:dassumandas1991@gmail.com">Email</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top">SKD<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+        <a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Software Engineering Portfolio · Bengaluru, India</div>
+        <h1>Suman Kumar<br>Das<span style="color:var(--cyan)">.</span></h1>
+        <div class="role">Senior .NET Full Stack Developer</div>
+        <p class="hero-copy">I build and support enterprise web applications with a focus on C#, ASP.NET, Web API, system integration and SQL Server. My experience spans business-critical platforms, data integration, production troubleshooting and delivery workflows.</p>
+        <div class="actions">
+          <a class="button primary" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener">Download résumé ↗</a>
+          <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
       </div>
+      <aside class="profile-card" aria-label="Professional summary">
+        <div class="monogram" aria-hidden="true">SKD</div>
+        <h2>Professional snapshot</h2>
+        <p class="sub">Enterprise .NET development</p>
+        <div class="fact"><span>Current organization</span><strong>TCS</strong></div>
+        <div class="fact"><span>Current role</span><strong>System Engineer</strong></div>
+        <div class="fact"><span>Experience</span><strong>7.8 years</strong></div>
+        <div class="fact"><span>Core database</span><strong>SQL Server</strong></div>
+        <div class="fact"><span>Delivery tools</span><strong>Azure DevOps · Git</strong></div>
+      </aside>
     </div>
   </header>
 
-  <nav><div class="container">
-    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-    <a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
-  </div></nav>
-
-  <main class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p class="section-lead">Senior .NET Full Stack Developer with 7.8 years of experience, as stated in my current resume, building and supporting enterprise web applications.</p>
-      <div class="about-grid">
-        <article class="card"><h3>Backend & APIs</h3><p>Developing application modules and integrations using C#, ASP.NET, ASP.NET MVC, Web API, WCF/ASMX and ADO.NET.</p></article>
-        <article class="card"><h3>Database Engineering</h3><p>Working with SQL Server, stored procedures, views, query optimization and enterprise data integration.</p></article>
-        <article class="card"><h3>Delivery & Collaboration</h3><p>Experience with Azure DevOps build and deployment pipelines, Git/TFS, Agile delivery, UAT and production support.</p></article>
-        <article class="card"><h3>Frontend Development</h3><p>Working with React.js, JavaScript, jQuery, AJAX, HTML, CSS and Bootstrap.</p></article>
+  <main id="main">
+    <div class="wrap">
+      <div class="stats" aria-label="Career highlights">
+        <div class="stat"><strong>7.8</strong><span>Years of professional experience</span></div>
+        <div class="stat"><strong>4</strong><span>Organizations</span></div>
+        <div class="stat"><strong>6</strong><span>Project areas</span></div>
+        <div class="stat"><strong>7</strong><span>Developers led at TCS</span></div>
       </div>
-    </section>
 
-    <section id="experience">
-      <h2>Professional Experience</h2>
-      <p class="section-lead">Career timeline based on the employment history in my resume.</p>
-      <div class="timeline">
-        <article class="job current">
-          <div class="date">MAR 2022 — PRESENT</div>
+      <section id="about">
+        <div class="section-head">
+          <div class="kicker">01 / Introduction</div>
+          <h2>Engineering with a business-first mindset.</h2>
+          <p>My work sits at the intersection of application development, enterprise integration and reliable data access. I focus on understanding the business flow, building maintainable modules and resolving issues that affect users and operations.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel"><h3>Backend & application development</h3><p>Hands-on development with C#, ASP.NET, ASP.NET MVC, Web API, WCF/ASMX web services and ADO.NET.</p></article>
+          <article class="panel"><h3>Database engineering</h3><p>SQL Server development with T-SQL, stored procedures, views, data validation and query performance investigation.</p></article>
+          <article class="panel"><h3>Enterprise integration</h3><p>Experience supporting system-to-system data flows, including SAP BW and SAP ECC integration through web services.</p></article>
+          <article class="panel"><h3>Delivery & production support</h3><p>Azure DevOps build and deployment workflows, Git/TFS version control, debugging, unit testing, UAT and production troubleshooting.</p></article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-head">
+          <div class="kicker">02 / Career</div>
+          <h2>Professional experience</h2>
+          <p>A career timeline across enterprise applications, manufacturing systems, predictive analytics and public-sector platforms.</p>
+        </div>
+        <div class="timeline">
+          <article class="job">
+            <div class="date">MAR 2022 — PRESENT</div>
+            <div>
+              <h3>Tata Consultancy Services (TCS)</h3>
+              <div class="position">System Engineer · .NET Developer · Bengaluru</div>
+              <p><strong>Project: MyAssignments</strong> — an enterprise three-tier application managing sales-related attributes used in reporting and analytics, integrating SAP BW and SAP ECC data for downstream systems.</p>
+              <ul>
+                <li>Develop and maintain application modules using C# and ASP.NET.</li>
+                <li>Build and consume WCF/ASMX web services for system integration.</li>
+                <li>Maintain SQL queries, stored procedures and views; investigate data issues and query performance.</li>
+                <li>Support application testing, UAT, production troubleshooting and Azure DevOps build/deployment activities.</li>
+                <li>Lead a team of seven developers through technical direction, code reviews and mentoring.</li>
+              </ul>
+              <div class="tags"><span class="tag">C#</span><span class="tag">.NET Framework</span><span class="tag">ASP.NET</span><span class="tag">WCF / ASMX</span><span class="tag">ADO.NET</span><span class="tag">SQL Server 2019</span><span class="tag">Azure DevOps</span><span class="tag">IIS</span></div>
+            </div>
+          </article>
+          <article class="job">
+            <div class="date">APR 2021 — JAN 2022</div>
+            <div>
+              <h3>ITC Infotech India Ltd.</h3>
+              <div class="position">Associate IT Consultant · Pune</div>
+              <p><strong>Project: KONE Manufacturing Execution System (DELMIA Apriso).</strong> Supported regression and UAT testing, prepared test scripts, validated production data with SQL queries and collaborated with development teams on defect analysis.</p>
+              <div class="tags"><span class="tag">DELMIA Apriso</span><span class="tag">SQL Server</span><span class="tag">Regression</span><span class="tag">UAT</span></div>
+            </div>
+          </article>
+          <article class="job">
+            <div class="date">OCT 2020 — FEB 2021</div>
+            <div>
+              <h3>CHETU India Pvt. Ltd.</h3>
+              <div class="position">Software Engineer · Noida</div>
+              <p><strong>Project: Veptas Technology MGLD.</strong> Maintained C# and ASP.NET modules for a predictive analytics platform and contributed to unit testing and HLD, LLD, ER and sequence-diagram documentation.</p>
+              <div class="tags"><span class="tag">C#</span><span class="tag">ASP.NET</span><span class="tag">SQL Server</span><span class="tag">Technical Design</span></div>
+            </div>
+          </article>
+          <article class="job">
+            <div class="date">JUL 2018 — SEP 2020</div>
+            <div>
+              <h3>CSM Technologies</h3>
+              <div class="position">Software Engineer · Bhubaneswar</div>
+              <p>Developed and maintained C#, VB.NET and ASP.NET MVC modules for government applications, including PHED Bihar, TMIS Odisha and I3MS Odisha. Worked with SQL Server, design documentation and unit testing.</p>
+              <div class="tags"><span class="tag">C#</span><span class="tag">VB.NET</span><span class="tag">ASP.NET MVC</span><span class="tag">SQL Server</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-head">
+          <div class="kicker">03 / Toolkit</div>
+          <h2>Technical skills</h2>
+          <p>Technologies and practices reflected in my professional experience and current résumé.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="panel"><h3>Languages</h3><div class="tags"><span class="tag">C#</span><span class="tag">VB.NET</span><span class="tag">JavaScript</span><span class="tag">SQL / T-SQL</span></div></article>
+          <article class="panel"><h3>Backend & APIs</h3><div class="tags"><span class="tag">ASP.NET</span><span class="tag">ASP.NET MVC</span><span class="tag">Web API</span><span class="tag">WCF</span><span class="tag">ASMX</span><span class="tag">ADO.NET</span><span class="tag">SOAP / REST</span></div></article>
+          <article class="panel"><h3>Frontend</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">AJAX</span><span class="tag">React.js</span></div></article>
+          <article class="panel"><h3>Database</h3><div class="tags"><span class="tag">SQL Server</span><span class="tag">Stored Procedures</span><span class="tag">Views</span><span class="tag">Query Optimization</span><span class="tag">MySQL · Exposure</span><span class="tag">Oracle · Exposure</span></div></article>
+          <article class="panel"><h3>Cloud & delivery</h3><div class="tags"><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Build Pipelines</span><span class="tag">Deployment Support</span><span class="tag">Microsoft Azure</span><span class="tag">IIS</span></div></article>
+          <article class="panel"><h3>Tools & practices</h3><div class="tags"><span class="tag">Visual Studio</span><span class="tag">SSMS</span><span class="tag">Git</span><span class="tag">TFS</span><span class="tag">SVN</span><span class="tag">Jira</span><span class="tag">ServiceNow</span><span class="tag">Unit Testing</span><span class="tag">UAT</span></div></article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-head">
+          <div class="kicker">04 / Selected work</div>
+          <h2>Project experience</h2>
+          <p>Examples from professional engagements. Client-sensitive implementation details are intentionally kept high-level.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="panel project">
+            <div class="project-type">Enterprise business application</div>
+            <h3>MyAssignments · TCS</h3>
+            <p>Three-tier sales-attribute application integrating SAP BW and ECC data for downstream reporting and analytics.</p>
+            <div class="stack">C# · ASP.NET · WCF/ASMX · SQL Server · Azure DevOps</div>
+          </article>
+          <article class="panel project">
+            <div class="project-type">Manufacturing execution</div>
+            <h3>KONE MES · ITC Infotech</h3>
+            <p>DELMIA Apriso environment with regression and UAT scripts, SQL data validation and defect analysis.</p>
+            <div class="stack">DELMIA Apriso · SQL Server · Testing</div>
+          </article>
+          <article class="panel project">
+            <div class="project-type">Predictive analytics</div>
+            <h3>Veptas Technology MGLD · CHETU</h3>
+            <p>C# and ASP.NET application modules, unit testing and technical design documentation.</p>
+            <div class="stack">C# · ASP.NET · SQL Server</div>
+          </article>
+          <article class="panel project">
+            <div class="project-type">Public sector systems</div>
+            <h3>PHED Bihar · CSM Technologies</h3>
+            <p>Application development and maintenance for rural water-supply workflows.</p>
+            <div class="stack">C# · VB.NET · ASP.NET · SQL Server</div>
+          </article>
+          <article class="panel project">
+            <div class="project-type">Public sector systems</div>
+            <h3>TMIS Odisha · CSM Technologies</h3>
+            <p>Web and mobile system for tubewell installation, maintenance and grievance tracking.</p>
+            <div class="stack">C# · VB.NET · SQL Server</div>
+          </article>
+          <article class="panel project">
+            <div class="project-type">Public sector systems</div>
+            <h3>I3MS Odisha · CSM Technologies</h3>
+            <p>Application development and maintenance for the Integrated Mines and Minerals Management System.</p>
+            <div class="stack">ASP.NET MVC · C# · SQL Server</div>
+          </article>
+        </div>
+        <div class="note">Alongside professional work, I maintain a separate <a href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener">JavaScript practice repository</a> for fundamentals and coding exercises. It is a learning repository, not a client project.</div>
+      </section>
+
+      <section id="education">
+        <div class="section-head">
+          <div class="kicker">05 / Education</div>
+          <h2>Academic background</h2>
+        </div>
+        <article class="panel education">
           <div>
-            <div class="company">Tata Consultancy Services (TCS)</div>
-            <div class="position">System Engineer (.NET Developer)</div>
-            <p>MyAssignments — enterprise three-tier sales-attribute application integrating SAP BW and SAP ECC data for downstream reporting and analytics.</p>
-            <ul>
-              <li>Developed C# and ASP.NET modules and optimized SQL Server queries, stored procedures and views.</li>
-              <li>Built and consumed WCF/ASMX services for SAP integration.</li>
-              <li>Managed builds and deployments through Azure DevOps; supported UAT and production troubleshooting.</li>
-              <li>Led a team of 7, including technical direction, code reviews and mentoring.</li>
-            </ul>
-            <p><strong>Technologies:</strong> C#, ASP.NET, WCF/ASMX, ADO.NET, SQL Server, JavaScript, jQuery, Azure DevOps, Git/TFS, IIS.</p>
+            <h3>Bachelor of Technology — Electronics and Telecommunication Engineering</h3>
+            <p>Balasore College of Engineering and Technology · BPUT, Odisha</p>
+            <p>CGPA: 7.1 / 10</p>
           </div>
+          <div class="year">2009 — 2013</div>
         </article>
-        <article class="job">
-          <div class="date">APR 2021 — JAN 2022</div>
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <div class="kicker">06 / Contact</div>
+          <h2>Let’s connect.</h2>
+          <p>Open to conversations about senior .NET development, enterprise application engineering, API and system integration, and backend ownership.</p>
+        </div>
+        <div class="contact-card">
           <div>
-            <div class="company">ITC Infotech India Ltd</div>
-            <div class="position">Associate IT Consultant</div>
-            <p>Worked on Kone MES (DELMIA Apriso), supporting manufacturing system quality through regression and UAT scripts, SQL data validation, defect analysis and collaboration with development teams.</p>
+            <h3>Suman Kumar Das</h3>
+            <p><a href="mailto:dassumandas1991@gmail.com">dassumandas1991@gmail.com</a></p>
           </div>
-        </article>
-        <article class="job">
-          <div class="date">OCT 2020 — FEB 2021</div>
-          <div>
-            <div class="company">CHETU India Pvt. Ltd.</div>
-            <div class="position">Software Engineer</div>
-            <p>Developed and maintained C# and ASP.NET modules for a predictive analytics platform supporting loan decision accuracy and servicing surveillance. Prepared HLD/LLD and design diagrams and performed unit testing.</p>
+          <div class="actions">
+            <a class="button primary" href="mailto:dassumandas1991@gmail.com">Email me</a>
+            <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-        </article>
-        <article class="job">
-          <div class="date">JUL 2018 — SEP 2020</div>
-          <div>
-            <div class="company">CSM Technologies</div>
-            <div class="position">Software Engineer</div>
-            <p>Developed and maintained C#, VB.NET and ASP.NET MVC modules for government projects including PHED Bihar, TMIS Odisha and I3MS Odisha. Worked with SQL Server, design documentation and unit testing.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skill-grid">
-        <div class="card"><h3>Backend</h3><div class="tag-wrap"><span class="tag">C#</span><span class="tag">ASP.NET</span><span class="tag">ASP.NET MVC</span><span class="tag">Web API</span><span class="tag">WCF</span><span class="tag">ASMX</span><span class="tag">ADO.NET</span></div></div>
-        <div class="card"><h3>Frontend</h3><div class="tag-wrap"><span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">AJAX</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span></div></div>
-        <div class="card"><h3>Database</h3><div class="tag-wrap"><span class="tag">SQL Server</span><span class="tag">Stored Procedures</span><span class="tag">Views</span><span class="tag">Query Optimization</span><span class="tag">MySQL</span><span class="tag">Oracle</span></div></div>
-        <div class="card"><h3>Cloud, DevOps & Tools</h3><div class="tag-wrap"><span class="tag">Azure</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">IIS</span><span class="tag">Git</span><span class="tag">TFS</span><span class="tag">SVN</span><span class="tag">Visual Studio</span><span class="tag">SSMS</span></div></div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="project-grid">
-        <article class="card project-card"><h3>MyAssignments — TCS</h3><p class="project-stack">C# · ASP.NET · WCF/ASMX · SQL Server · Azure DevOps</p><p>Three-tier enterprise application integrating SAP BW and ECC sales data for reporting and analytics.</p></article>
-        <article class="card project-card"><h3>Kone MES — ITC Infotech</h3><p class="project-stack">DELMIA Apriso · SQL Server · Regression & UAT</p><p>Manufacturing execution system work involving regression scripts, SQL validation and defect analysis.</p></article>
-        <article class="card project-card"><h3>Veptas Technology MGLD — CHETU</h3><p class="project-stack">C# · ASP.NET · Predictive Analytics</p><p>Predictive analytics platform for loan decisions and servicing surveillance.</p></article>
-        <article class="card project-card"><h3>TMIS / I3MS / PHED — CSM Technologies</h3><p class="project-stack">C# · VB.NET · ASP.NET MVC · SQL Server</p><p>Government application development for water supply, tubewell management and mines/minerals management.</p></article>
-      </div>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <article class="card">
-        <h3>Bachelor of Technology — Electronics and Telecommunication Engineering</h3>
-        <p>Balasore College of Engineering and Technology · BPUT, Odisha · 2009–2013 · CGPA: 7.1/10</p>
-      </article>
-    </section>
-
-    <section id="contact">
-      <h2>Let's Connect</h2>
-      <p class="section-lead">I'm interested in connecting with software developers, engineering teams and technology professionals.</p>
-      <div class="actions">
-        <a class="btn primary" href="mailto:dassumandas1991@gmail.com">Send an Email</a>
-        <a class="btn secondary" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">Connect on LinkedIn</a>
-        <a class="btn secondary" href="https://github.com/sumandfs" target="_blank" rel="noopener">Explore GitHub</a>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   </main>
-  <footer><div class="container">© 2026 Suman Kumar Das · Engineering with purpose. Learning continuously. Building for impact.</div></footer>
+  <footer><div class="wrap">© 2026 Suman Kumar Das · Built with HTML and CSS · Hosted on GitHub Pages</div></footer>
 </body>
 </html>
