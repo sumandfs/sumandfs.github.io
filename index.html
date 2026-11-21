@@ -406,6 +406,23 @@
       .job:last-child { padding-bottom:17px; }
     }
 
+  
+    .building-table-wrap { width:100%; overflow-x:auto; border:1px solid #d7dee7; background:#fff; }
+    .building-table { width:100%; min-width:760px; border-collapse:collapse; table-layout:fixed; color:#303b49; font-size:.88rem; line-height:1.65; }
+    .building-table th, .building-table td { padding:15px 16px; text-align:left; vertical-align:top; border-right:1px solid #d7dee7; border-bottom:1px solid #d7dee7; }
+    .building-table th:last-child, .building-table td:last-child { border-right:0; }
+    .building-table tbody tr:last-child td { border-bottom:0; }
+    .building-table thead th { background:#f6f8fa; color:#4a5667; font-size:.68rem; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
+    .building-table th:nth-child(1), .building-table td:nth-child(1) { width:22%; }
+    .building-table th:nth-child(2), .building-table td:nth-child(2) { width:21%; }
+    .building-table td strong { display:block; color:#202b3a; font-weight:800; }
+    .table-org { display:block; margin-top:3px; color:#657184; font-size:.8rem; font-weight:650; }
+    .building-table tbody tr:hover { background:#f8fbff; }
+    @media (max-width:620px) {
+      .building-table { min-width:700px; font-size:.82rem; }
+      .building-table th, .building-table td { padding:12px; }
+    }
+
   </style>
 </head>
 <body>
@@ -581,48 +598,49 @@
       <section id="projects">
         <div class="section-head">
           <div class="kicker">04 / Selected work</div>
-          <h2>Project experience</h2>
-          <p>Examples from professional engagements. Client-sensitive implementation details are intentionally kept high-level.</p>
+          <h2>Building</h2>
+          <p>Selected enterprise systems from my professional experience. Client-specific details are kept at a high level.</p>
         </div>
-        <div class="projects-grid">
-          <article class="panel project">
-            <div class="project-type">Enterprise business application</div>
-            <h3>MyAssignments · TCS</h3>
-            <p>Three-tier sales-attribute application integrating SAP BW and ECC data for downstream reporting and analytics.</p>
-            <div class="stack">C# · ASP.NET · WCF/ASMX · SQL Server · Azure DevOps</div>
-          </article>
-          <article class="panel project">
-            <div class="project-type">Manufacturing execution</div>
-            <h3>KONE MES · ITC Infotech</h3>
-            <p>DELMIA Apriso environment with regression and UAT scripts, SQL data validation and defect analysis.</p>
-            <div class="stack">DELMIA Apriso · SQL Server · Testing</div>
-          </article>
-          <article class="panel project">
-            <div class="project-type">Predictive analytics</div>
-            <h3>Veptas Technology MGLD · CHETU</h3>
-            <p>C# and ASP.NET application modules, unit testing and technical design documentation.</p>
-            <div class="stack">C# · ASP.NET · SQL Server</div>
-          </article>
-          <article class="panel project">
-            <div class="project-type">Public sector systems</div>
-            <h3>PHED Bihar · CSM Technologies</h3>
-            <p>Application development and maintenance for rural water-supply workflows.</p>
-            <div class="stack">C# · VB.NET · ASP.NET · SQL Server</div>
-          </article>
-          <article class="panel project">
-            <div class="project-type">Public sector systems</div>
-            <h3>TMIS Odisha · CSM Technologies</h3>
-            <p>Web and mobile system for tubewell installation, maintenance and grievance tracking.</p>
-            <div class="stack">C# · VB.NET · SQL Server</div>
-          </article>
-          <article class="panel project">
-            <div class="project-type">Public sector systems</div>
-            <h3>I3MS Odisha · CSM Technologies</h3>
-            <p>Application development and maintenance for the Integrated Mines and Minerals Management System.</p>
-            <div class="stack">ASP.NET MVC · C# · SQL Server</div>
-          </article>
+        <div class="building-table-wrap">
+          <table class="building-table">
+            <thead>
+              <tr><th scope="col">Project</th><th scope="col">Area</th><th scope="col">Contribution</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>MyAssignments</strong><span class="table-org">TCS</span></td>
+                <td>Enterprise business application</td>
+                <td>C# / ASP.NET three-tier application; SAP BW/ECC integration using WCF/ASMX; SQL Server query, stored procedure and view optimization; Azure DevOps builds and deployments.</td>
+              </tr>
+              <tr>
+                <td><strong>KONE MES</strong><span class="table-org">ITC Infotech</span></td>
+                <td>Manufacturing execution</td>
+                <td>DELMIA Apriso regression and UAT scripts; SQL Server validation of production data and defect tracing.</td>
+              </tr>
+              <tr>
+                <td><strong>Veptas Technology MGLD</strong><span class="table-org">CHETU</span></td>
+                <td>Predictive analytics</td>
+                <td>C# and ASP.NET modules for loan decision and servicing surveillance; design documentation and unit testing.</td>
+              </tr>
+              <tr>
+                <td><strong>PHED Bihar</strong><span class="table-org">CSM Technologies</span></td>
+                <td>Government / public services</td>
+                <td>C#, VB.NET and ASP.NET MVC development and maintenance for the rural water-supply system.</td>
+              </tr>
+              <tr>
+                <td><strong>TMIS Odisha</strong><span class="table-org">CSM Technologies</span></td>
+                <td>Government / public services</td>
+                <td>Web and mobile system for tubewell installation, maintenance and grievance tracking.</td>
+              </tr>
+              <tr>
+                <td><strong>I3MS Odisha</strong><span class="table-org">CSM Technologies</span></td>
+                <td>Government / public services</td>
+                <td>Development and maintenance for the Integrated Mines and Minerals Management System.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="note">Alongside professional work, I maintain a separate <a href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener">JavaScript practice repository</a> for fundamentals and coding exercises. It is a learning repository, not a client project.</div>
+        <div class="note">Alongside my professional project work, I maintain a separate <a href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener">JavaScript practice repository</a> for fundamentals and coding exercises.</div>
       </section>
       <section id="activity">
         <div class="section-head">
