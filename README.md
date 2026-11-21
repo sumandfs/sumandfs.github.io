@@ -5,7 +5,7 @@ This repository contains the **HTML, CSS and image assets** used to publish my p
 ## Open the public pages
 
 - **GitHub profile:** https://github.com/sumandfs
-- **Live portfolio:** https://sumandfs.github.io/sumankumardas.github.io/
+- **Live portfolio:** https://sumandfs.github.io/
 - **LinkedIn:** https://www.linkedin.com/in/suman-kumar-das-9866311b6
 
 ## About the site
