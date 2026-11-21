@@ -604,6 +604,59 @@
     html[data-theme="dark"] a { color: #7dd3fc; }
     html[data-theme="dark"] a:hover { color: #e0f2fe; }
 
+  
+    /* Typography refinement: confident but not heavy */
+    body { font-weight: 400; letter-spacing: normal; }
+    .nav-links a { font-weight: 550 !important; letter-spacing: 0 !important; }
+    .sidebar-profile h2 {
+      font-size: 1.38rem !important;
+      font-weight: 600 !important;
+      letter-spacing: -.025em !important;
+    }
+    .sidebar-role {
+      font-size: .96rem !important;
+      font-weight: 550 !important;
+      letter-spacing: -.01em !important;
+    }
+    .sidebar-meta span { font-weight: 650 !important; }
+    .sidebar-meta strong, .sidebar-meta a { font-weight: 500 !important; }
+    .sidebar-actions .button {
+      font-weight: 550 !important;
+      letter-spacing: 0 !important;
+    }
+    .hero h1 {
+      font-size: clamp(2.35rem, 4.5vw, 3.65rem) !important;
+      font-weight: 600 !important;
+      letter-spacing: -.045em !important;
+      line-height: 1.12 !important;
+    }
+    .hero .role { font-weight: 550 !important; }
+    .eyebrow, .kicker { font-weight: 650 !important; letter-spacing: .14em !important; }
+    .hero-meta { font-weight: 650 !important; letter-spacing: .12em !important; }
+    .hero-actions .button {
+      font-weight: 600 !important;
+      letter-spacing: .075em !important;
+    }
+    .status-label { font-weight: 650 !important; letter-spacing: .11em !important; }
+    .status-strip strong { font-weight: 550 !important; }
+    .stat strong { font-weight: 600 !important; }
+    .section-head h2 { font-weight: 600 !important; letter-spacing: -.025em !important; }
+    .panel h3, .job h3, .project h3, .education h3, .contact-card h3 {
+      font-weight: 600 !important;
+      letter-spacing: -.015em !important;
+    }
+    .job .position { font-weight: 550 !important; }
+    .date { font-weight: 650 !important; letter-spacing: .02em !important; }
+    .tag { font-weight: 500 !important; }
+    .building-table thead th { font-weight: 650 !important; }
+    .building-table td strong { font-weight: 600 !important; }
+    .theme-trigger { font-weight: 550 !important; }
+    .theme-menu button { font-weight: 500 !important; }
+    .button { font-weight: 550 !important; letter-spacing: .015em !important; }
+    @media (max-width: 620px) {
+      .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem) !important; }
+    }
+
   </style>
 </head>
 <body>
