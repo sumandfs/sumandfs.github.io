@@ -305,23 +305,20 @@
     .skill-icon.practices { color:#d97706; background:rgba(217,119,6,.12); }
     .chips { gap:8px; margin-top:0; }
     .chip { padding:7px 10px; border-radius:7px; font-size:.75rem; }
-    .open-source-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:32px; align-items:stretch; }
-    .open-card { min-width:0; min-height:330px; display:flex; flex-direction:column; padding:24px; background:var(--card); border:1px solid var(--line); border-radius:17px; box-shadow:var(--shadow); transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease; }
+    .open-source-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:32px; align-items:stretch; }
+    .open-card { min-width:0; min-height:390px; display:flex; flex-direction:column; padding:30px 28px 26px; background:var(--card); border:1px solid var(--line); border-radius:17px; box-shadow:var(--shadow); transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease; }
     .open-card:hover { transform:translateY(-3px); border-color:var(--accent); box-shadow:0 13px 34px rgba(15,23,42,.085); }
-    .open-card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
-    .open-icon { width:46px; height:46px; display:grid; place-items:center; border-radius:11px; background:color-mix(in srgb,var(--accent) 12%,var(--bg-soft)); color:var(--accent); font:700 1.25rem/1 ui-monospace,SFMono-Regular,Menlo,monospace; }
-    .fork-icon { color:#d97706; background:rgba(217,119,6,.11); }
-    .web-icon { color:#0d9488; background:rgba(13,148,136,.11); }
-    .open-label { padding:5px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font:600 .63rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.035em; text-transform:uppercase; }
-    .open-label.forked { color:#a16207; background:rgba(217,119,6,.08); border-color:rgba(217,119,6,.23); }
-    .open-card h3 { margin:0 0 10px; font-size:1.14rem; font-weight:600; letter-spacing:-.02em; }
-    .open-card p { margin:0; color:var(--muted); font-size:.9rem; line-height:1.7; }
-    .open-card p a { color:var(--accent); }
-    .open-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:17px; }
-    .open-tags span { padding:5px 8px; border:1px solid var(--line); border-radius:6px; color:var(--muted); background:var(--bg-soft); font:500 .69rem/1.3 ui-monospace,SFMono-Regular,Menlo,monospace; }
-    .open-link { display:inline-flex; align-items:center; gap:8px; margin-top:auto; padding-top:22px; color:var(--accent); font:500 .82rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .open-icon { width:48px; height:48px; display:grid; place-items:center; margin-bottom:22px; border-radius:10px; background:color-mix(in srgb,var(--accent) 12%,var(--bg-soft)); color:var(--accent); }
+    .open-icon svg { display:block; width:36px; height:36px; }
+    .open-icon-js { color:#e99b16; background:rgba(233,155,22,.12); }
+    .open-icon-source { color:#0d9488; background:rgba(13,148,136,.11); }
+    .open-icon-linkedin { color:#0a66c2; background:rgba(10,102,194,.1); }
+    .open-card h3 { margin:0 0 12px; font-size:1.16rem; font-weight:600; letter-spacing:-.02em; }
+    .open-card p { margin:0; color:var(--muted); font-size:.94rem; line-height:1.72; }
+    .open-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+    .open-tags span { padding:7px 10px; border:1px solid var(--line); border-radius:7px; color:var(--text); background:var(--bg-soft); font:500 .74rem/1.3 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .open-link { display:inline-flex; align-items:center; gap:8px; margin-top:auto; padding-top:24px; color:var(--accent); font:500 .88rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; }
     .open-link:hover { text-decoration:none; gap:12px; }
-    .open-source-note { margin:19px 0 0; color:var(--muted); font-size:.82rem; }
     @media (max-width:900px) {
       .skills-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .open-source-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -550,40 +547,36 @@
       <section id="open-source">
         <p class="eyebrow">04 · Open source & community</p>
         <h2>Building in the open</h2>
-        <p class="section-intro">A small collection of public code, hands-on learning and projects I explore openly. I distinguish my own repositories from projects I have forked.</p>
         <div class="open-source-grid">
           <article class="open-card">
-            <div class="open-card-top">
-              <span class="open-icon code-icon" aria-hidden="true">&lt;/&gt;</span>
-              <span class="open-label personal">Personal repository</span>
+            <div class="open-icon open-icon-js" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img"><path d="M8 8h32v32H8z" fill="currentColor" opacity=".13"/><path d="M26 15v17c0 4-2 6-6 6-3 0-5-2-6-4l4-3c1 2 2 3 3 3s2-1 2-3V15zm7 17c1 2 3 3 5 3s3-1 3-2-1-2-4-3c-4-2-6-3-6-7 0-4 3-7 8-7 4 0 6 1 8 5l-4 3c-1-2-2-3-4-3-1 0-2 1-2 2s1 2 4 3c5 2 7 4 7 8s-4 7-9 7c-5 0-8-2-10-6z" fill="currentColor"/></svg>
             </div>
             <h3>JavaScript Practice</h3>
-            <p>A hands-on learning repository with runnable examples covering variables, data types, type conversion, comparison operators and strings.</p>
-            <div class="open-tags"><span>JavaScript</span><span>Node.js</span><span>Fundamentals</span></div>
-            <a class="open-link" href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">→</span></a>
+            <p>Small, hands-on exercises as I strengthen my JavaScript fundamentals — variables, data types, type conversion, comparisons and strings.</p>
+            <div class="open-tags"><span>JavaScript</span><span>Fundamentals</span><span>Coding practice</span></div>
+            <a class="open-link" href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">→</span></a>
           </article>
+
           <article class="open-card">
-            <div class="open-card-top">
-              <span class="open-icon web-icon" aria-hidden="true">↗</span>
-              <span class="open-label personal">Personal project</span>
+            <div class="open-icon open-icon-source" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img"><path d="M8 8h32a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4z" fill="currentColor" opacity=".13"/><path d="M17 17l-7 7 7 7m14-14 7 7-7 7M27 13l-6 22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3>Portfolio Website</h3>
-            <p>The source code behind this website, built with HTML, CSS and JavaScript. It includes a responsive layout, theme switching and a GitHub Pages deployment.</p>
+            <p>The source behind this website — a responsive professional portfolio built with HTML, CSS and JavaScript, with selectable colour themes.</p>
             <div class="open-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>
             <a class="open-link" href="https://github.com/sumandfs/sumandfs.github.io" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">→</span></a>
           </article>
+
           <article class="open-card">
-            <div class="open-card-top">
-              <span class="open-icon fork-icon" aria-hidden="true">⑂</span>
-              <span class="open-label forked">Forked project</span>
+            <div class="open-icon open-icon-linkedin" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img"><rect x="5" y="5" width="38" height="38" rx="5" fill="currentColor"/><path d="M14 20h5v16h-5zm2.5-8a3 3 0 1 1 0 6 3 3 0 0 1 0-6M23 20h5v2.2c.8-1.4 2.4-2.6 5-2.6 5 0 6 3.2 6 7.4V36h-5v-8c0-2-.1-4.5-2.8-4.5S28 25.6 28 27.9V36h-5z" fill="#fff"/></svg>
             </div>
-            <h3>AI Job Search</h3>
-            <p>A public fork of <a href="https://github.com/ai-job-search-dev/ai-job-search" target="_blank" rel="noopener noreferrer">Mads Lorentzen’s AI Job Search project</a>. The upstream project and original authorship remain credited; this is not presented as my original application.</p>
-            <div class="open-tags"><span>Open source</span><span>Claude Code</span><span>Exploration</span></div>
-            <a class="open-link" href="https://github.com/sumandfs/ai-job-search" target="_blank" rel="noopener noreferrer">View fork <span aria-hidden="true">→</span></a>
+            <h3>LinkedIn</h3>
+            <p>My professional profile with career experience, .NET development background and a way to connect about engineering opportunities.</p>
+            <a class="open-link" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener noreferrer">Connect <span aria-hidden="true">→</span></a>
           </article>
         </div>
-        <p class="open-source-note">This section highlights public repositories only. My enterprise client projects are described separately in my professional work history and GitHub profile.</p>
       </section>
 
       <section id="activity">
