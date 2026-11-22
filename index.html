@@ -416,6 +416,49 @@
       .terminal pre { padding:17px 16px 19px !important; font-size:.76rem !important; line-height:1.95 !important; }
     }
 
+
+    /* Balance the About copy and terminal card on the same visual baseline */
+    .about-grid {
+      grid-template-columns:minmax(0,1.12fr) minmax(390px,.88fr) !important;
+      align-items:center !important;
+      gap:38px !important;
+    }
+    .about-copy { max-width:660px; }
+    .about-copy p { line-height:1.72; margin-bottom:17px; }
+    .terminal {
+      width:100%;
+      max-width:520px;
+      justify-self:end;
+      align-self:center;
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      border-radius:14px !important;
+    }
+    .terminal-bar { flex:0 0 auto; padding:12px 16px !important; }
+    .terminal pre {
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:18px 20px !important;
+      font-size:.78rem !important;
+      line-height:1.72 !important;
+      letter-spacing:0 !important;
+      overflow-wrap:anywhere;
+    }
+    .terminal .k, .terminal .v, .terminal .prompt { font-size:inherit; }
+    @media (max-width:900px) {
+      .about-grid {
+        grid-template-columns:minmax(0,1fr) !important;
+        align-items:stretch !important;
+        gap:24px !important;
+      }
+      .about-copy { max-width:none; }
+      .terminal { max-width:none; min-height:0; }
+      .terminal pre { padding:18px !important; line-height:1.75 !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -508,13 +551,11 @@
             <pre><span class="prompt">$</span> cat profile.yaml
 <span class="k">name:</span> <span class="v">Suman Kumar Das</span>
 <span class="k">role:</span> <span class="v">Senior .NET Full Stack Developer</span>
-<span class="k">organization:</span> <span class="v">Tata Consultancy Services</span>
+<span class="k">company:</span> <span class="v">Tata Consultancy Services</span>
 <span class="k">location:</span> <span class="v">Bengaluru, India</span>
 <span class="k">experience:</span> <span class="v">7.8 years</span>
-<span class="k">core:</span>
-  - <span class="v">C# · .NET · ASP.NET · SQL Server</span>
-<span class="k">integration:</span>
-  - <span class="v">WCF · ASMX · SAP BW/ECC</span>
+<span class="k">stack:</span> <span class="v">C# · .NET · ASP.NET · SQL Server</span>
+<span class="k">integration:</span> <span class="v">WCF · ASMX · SAP BW/ECC</span>
 <span class="k">focus:</span> <span class="v">Enterprise application engineering</span></pre>
           </div>
         </div>
