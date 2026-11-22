@@ -369,6 +369,53 @@
       .current-job-detail { margin-left:28px; }
     }
 
+
+    /* High-contrast terminal palette inspired by the reference profile */
+    .terminal {
+      background:#191a20 !important;
+      border:1px solid #353844 !important;
+      border-radius:15px !important;
+      box-shadow:0 18px 44px rgba(15,23,42,.20),0 0 0 1px rgba(99,102,241,.07) !important;
+      font-size:.84rem !important;
+    }
+    .terminal-bar {
+      background:#22232a;
+      border-bottom:1px solid #3a3c46 !important;
+      padding:13px 16px !important;
+    }
+    .terminal pre {
+      padding:21px 22px 23px !important;
+      color:#eef2f8 !important;
+      font-size:.84rem !important;
+      line-height:2.02 !important;
+      letter-spacing:.005em;
+      text-shadow:none !important;
+    }
+    .terminal .prompt {
+      color:#5cc8ff !important;
+      font-weight:700;
+    }
+    .terminal .k {
+      color:#d0a2ff !important;
+      font-weight:600;
+    }
+    .terminal .v {
+      color:#83f0a3 !important;
+      font-weight:500;
+      text-shadow:0 0 10px rgba(131,240,163,.08);
+    }
+    [data-theme="dark"] .terminal,
+    [data-theme="midnight"] .terminal {
+      background:#17191f !important;
+      border-color:#394253 !important;
+      box-shadow:0 18px 44px rgba(0,0,0,.38),0 0 0 1px rgba(129,140,248,.10) !important;
+    }
+    [data-theme="dark"] .terminal-bar,
+    [data-theme="midnight"] .terminal-bar { background:#20232c; border-bottom-color:#394253 !important; }
+    @media (max-width:680px) {
+      .terminal pre { padding:17px 16px 19px !important; font-size:.76rem !important; line-height:1.95 !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -458,14 +505,17 @@
           </div>
           <div class="terminal" aria-label="Professional profile summary">
             <div class="terminal-bar"><i></i><i></i><i></i></div>
-            <pre><span class="k">developer:</span> <span class="v">"Suman Kumar Das"</span>
-<span class="k">role:</span> <span class="v">"Senior .NET Full Stack Developer"</span>
-<span class="k">organization:</span> <span class="v">"Tata Consultancy Services"</span>
-<span class="k">location:</span> <span class="v">"Bengaluru, India"</span>
-<span class="k">experience:</span> <span class="v">"7.8 years"</span>
-<span class="k">core:</span> [<span class="v">"C#"</span>, <span class="v">".NET"</span>, <span class="v">"ASP.NET"</span>, <span class="v">"SQL Server"</span>]
-<span class="k">integration:</span> [<span class="v">"WCF"</span>, <span class="v">"ASMX"</span>, <span class="v">"SAP BW/ECC"</span>]
-<span class="k">focus:</span> <span class="v">"Enterprise application engineering"</span></pre>
+            <pre><span class="prompt">$</span> cat profile.yaml
+<span class="k">name:</span> <span class="v">Suman Kumar Das</span>
+<span class="k">role:</span> <span class="v">Senior .NET Full Stack Developer</span>
+<span class="k">organization:</span> <span class="v">Tata Consultancy Services</span>
+<span class="k">location:</span> <span class="v">Bengaluru, India</span>
+<span class="k">experience:</span> <span class="v">7.8 years</span>
+<span class="k">core:</span>
+  - <span class="v">C# · .NET · ASP.NET · SQL Server</span>
+<span class="k">integration:</span>
+  - <span class="v">WCF · ASMX · SAP BW/ECC</span>
+<span class="k">focus:</span> <span class="v">Enterprise application engineering</span></pre>
           </div>
         </div>
       </section>
