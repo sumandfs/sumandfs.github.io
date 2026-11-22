@@ -9,7 +9,6 @@
   <meta property="og:description" content="Enterprise application development, backend engineering and system integration.">
   <meta property="og:type" content="website">
   <title>Suman Kumar Das — Senior .NET Full Stack Developer</title>
-  <link rel="preload" as="image" href="assets/profile/suman-kumar-das.jpg">
   <script>
     (function () {
       try {
@@ -120,12 +119,6 @@
     .btn { min-height: 43px; display: inline-flex; align-items: center; justify-content: center; padding: 10px 17px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); font-size: .88rem; font-weight: 550; transition: transform .16s ease,border-color .16s ease; }
     .btn:hover { text-decoration: none; transform: translateY(-2px); border-color: var(--accent); }
     .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--button-text); }
-    .portrait-card { width: min(100%, 310px); justify-self: end; padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
-    .portrait-wrap { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 13px; background: var(--bg-soft); }
-    .portrait-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 25%; }
-    .portrait-caption { padding: 14px 2px 1px; }
-    .portrait-caption strong { display: block; font-size: 1rem; font-weight: 600; }
-    .portrait-caption span { display: block; margin-top: 2px; color: var(--muted); font-size: .83rem; }
 
     .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; padding: 22px 0 27px; border-bottom: 1px solid var(--line); }
     .metric { padding: 14px 18px; border-right: 1px solid var(--line); }
@@ -209,7 +202,6 @@
       .nav-links a { display:block; padding:10px 5px; }
       .hero { padding:58px 0 45px; }
       .hero-grid { grid-template-columns:1fr; gap:26px; }
-      .portrait-card { width:min(230px,75%); justify-self:start; grid-row:1; }
       .hero-main { grid-row:2; }
       h1 { font-size:clamp(2.35rem,11vw,3.3rem); }
       section { padding:58px 0; }
@@ -225,6 +217,80 @@
       html { scroll-behavior:auto; }
       *, *:before, *:after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
     }
+
+    /* Photo-free hero with vivid, readable name gradient */
+    .hero {
+      min-height:560px; padding:74px 0 58px; position:relative; overflow:hidden;
+      background-color:var(--bg);
+      background-image:
+        linear-gradient(to right,color-mix(in srgb,var(--line) 58%,transparent) 1px,transparent 1px),
+        linear-gradient(to bottom,color-mix(in srgb,var(--line) 58%,transparent) 1px,transparent 1px),
+        radial-gradient(ellipse at 78% 8%,color-mix(in srgb,#2563eb 9%,transparent),transparent 42%),
+        radial-gradient(ellipse at 98% 65%,color-mix(in srgb,#8b5cf6 7%,transparent),transparent 36%);
+      background-size:170px 170px,170px 170px,auto,auto;
+      border-bottom:1px solid var(--line);
+    }
+    .hero:after { display:none; }
+    .hero-grid { display:block; max-width:1080px; }
+    .hero-main { max-width:920px; position:relative; z-index:2; }
+    .hero-flow { position:absolute; z-index:0; left:0; right:0; bottom:0; width:100%; height:58%; pointer-events:none; }
+    .hero .tag {
+      padding:7px 14px; color:var(--good);
+      background:color-mix(in srgb,var(--good) 7%,var(--bg));
+      border-color:color-mix(in srgb,var(--good) 26%,var(--line));
+      font-size:.82rem; letter-spacing:.015em;
+    }
+    .hero h1 {
+      max-width:930px; margin:28px 0 16px;
+      font-size:clamp(2.8rem,6.1vw,5.05rem);
+      line-height:1.06; font-weight:650; letter-spacing:-.058em; color:var(--text);
+    }
+    .hero h1 .grad {
+      display:inline-block;
+      background:linear-gradient(105deg,#087cf0 0%,#3569e8 42%,#6556e8 72%,#8b48df 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent; padding-right:.035em;
+    }
+    .hero-statement { color:var(--text); }
+    .hero .role { margin:18px 0; color:var(--accent); font-size:1rem; font-weight:500; letter-spacing:-.015em; }
+    .hero .role span { color:var(--muted); padding:0 3px; }
+    .hero .lead { max-width:760px; color:var(--muted); font-size:clamp(1rem,1.45vw,1.12rem); line-height:1.8; }
+    .hero .cta { margin-top:34px; gap:13px; }
+    .hero .btn { min-height:48px; padding:11px 19px; border-radius:9px; font-size:.91rem; font-weight:550; letter-spacing:0; }
+    .hero .btn.primary { background:linear-gradient(105deg,#087cf0,#355fe5); border-color:transparent; color:#fff; box-shadow:0 7px 18px rgba(37,99,235,.17); }
+    .hero .btn.primary:hover { background:linear-gradient(105deg,#066bd2,#4f46e5); box-shadow:0 10px 22px rgba(37,99,235,.22); }
+    .hero .btn:not(.primary) { background:var(--card); border-color:var(--line); color:var(--text); }
+    .hero .btn:not(.primary):hover { border-color:var(--accent); color:var(--accent); }
+    .hero-signature {
+      display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:31px;
+      color:var(--muted); font:600 .68rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.15em;
+    }
+    .hero-signature > span:not(.signature-dot) { color:var(--accent-2); }
+    .signature-dot { width:7px; height:7px; border-radius:50%; background:var(--good); box-shadow:0 0 0 4px color-mix(in srgb,var(--good) 12%,transparent); margin-right:2px; }
+    [data-theme="dark"] .hero h1 .grad, [data-theme="midnight"] .hero h1 .grad {
+      background:linear-gradient(105deg,#60a5fa 0%,#818cf8 52%,#c084fc 100%);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    [data-theme="dark"] .hero .btn.primary, [data-theme="midnight"] .hero .btn.primary { color:#071426; }
+    [data-theme="dark"] .hero { background-image:
+      linear-gradient(to right,rgba(148,163,184,.055) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(148,163,184,.055) 1px,transparent 1px),
+      radial-gradient(ellipse at 78% 8%,rgba(37,99,235,.16),transparent 42%),
+      radial-gradient(ellipse at 98% 65%,rgba(139,92,246,.12),transparent 36%); }
+    [data-theme="midnight"] .hero { background-image:
+      linear-gradient(to right,rgba(148,163,184,.06) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(148,163,184,.06) 1px,transparent 1px),
+      radial-gradient(ellipse at 78% 8%,rgba(34,211,238,.10),transparent 42%),
+      radial-gradient(ellipse at 98% 65%,rgba(167,139,250,.12),transparent 36%); }
+    @media (max-width:680px) {
+      .hero { min-height:0; padding:64px 0 48px; background-size:115px 115px,115px 115px,auto,auto; }
+      .hero h1 { font-size:clamp(2.45rem,11vw,3.5rem); margin-top:22px; }
+      .hero .lead { font-size:1rem; }
+      .hero .cta { margin-top:25px; }
+      .hero-signature { font-size:.61rem; letter-spacing:.09em; gap:7px; }
+      .hero-flow { height:42%; opacity:.7; }
+    }
+
   </style>
 </head>
 <body>
@@ -259,23 +325,37 @@
   </nav>
 
   <header class="hero" id="top">
+    <svg class="hero-flow" viewBox="0 0 1600 430" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="flowBlue" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0a84ff" stop-opacity="0"/>
+          <stop offset=".46" stop-color="#0a84ff" stop-opacity=".42"/>
+          <stop offset="1" stop-color="#8b5cf6" stop-opacity=".18"/>
+        </linearGradient>
+        <linearGradient id="flowViolet" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0a84ff" stop-opacity="0"/>
+          <stop offset=".6" stop-color="#6366f1" stop-opacity=".28"/>
+          <stop offset="1" stop-color="#8b5cf6" stop-opacity=".12"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 330 C180 280 250 365 390 326 S620 275 760 330 S990 394 1130 300 S1390 265 1600 220" fill="none" stroke="url(#flowBlue)" stroke-width="3"/>
+      <path d="M0 365 C190 342 265 390 415 360 S650 330 790 365 S1040 390 1180 342 S1420 320 1600 292" fill="none" stroke="url(#flowViolet)" stroke-width="2"/>
+      <path d="M0 330 C180 280 250 365 390 326 S620 275 760 330 S990 394 1130 300 S1390 265 1600 220 L1600 430 L0 430Z" fill="url(#flowBlue)" opacity=".08"/>
+    </svg>
     <div class="wrap hero-grid">
       <div class="hero-main">
-        <div class="tag">System Engineer · Tata Consultancy Services</div>
-        <h1>Hi, I'm <span class="grad">Suman Kumar Das</span>.<br>I build enterprise applications.</h1>
-        <p class="role">Senior .NET Full Stack Developer · 7.8 years · Bengaluru, India</p>
+        <div class="tag">System Engineer @ Tata Consultancy Services</div>
+        <h1>Hi, I'm <span class="grad">Suman Kumar Das</span>.<br><span class="hero-statement">I build enterprise applications.</span></h1>
+        <p class="role">Senior .NET Full Stack Developer <span>·</span> 7.8 years <span>·</span> Bengaluru, India</p>
         <p class="lead">I build and support business-critical web applications using C#, ASP.NET, Web API and SQL Server. My experience spans enterprise application development, SAP BW/ECC integration, database engineering, production troubleshooting and delivery support.</p>
         <div class="cta">
-          <a class="btn primary" href="#projects">Explore projects</a>
-          <a class="btn" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn" href="https://github.com/sumandfs" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="btn" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
+          <a class="btn primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/sumandfs" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="btn" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a>
         </div>
+        <div class="hero-signature"><span class="signature-dot"></span> ENTERPRISE APPLICATIONS <span>·</span> BACKEND ENGINEERING <span>·</span> SYSTEM INTEGRATION</div>
       </div>
-      <aside class="portrait-card" aria-label="Profile photograph">
-        <div class="portrait-wrap"><img src="assets/profile/suman-kumar-das.jpg" alt="Portrait of Suman Kumar Das" width="600" height="600"></div>
-        <div class="portrait-caption"><strong>Suman Kumar Das</strong><span>Senior .NET Full Stack Developer</span></div>
-      </aside>
     </div>
   </header>
 
