@@ -525,6 +525,75 @@
       .hero-pulse { opacity:.72; }
     }
 
+
+    /* Hero chart and verified professional snapshot cards */
+    .hero {
+      min-height:760px !important;
+      padding:70px 0 30px !important;
+    }
+    .hero-pulse {
+      position:absolute;
+      inset:0;
+      z-index:0;
+      width:100%;
+      height:100%;
+      display:block;
+      pointer-events:none;
+      opacity:1;
+    }
+    .hero-grid { max-width:1080px; }
+    .hero-main { max-width:920px; }
+    .hero-metrics {
+      position:relative;
+      z-index:3;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
+      margin-top:94px;
+    }
+    .hero-metrics .metric {
+      min-width:0;
+      min-height:112px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:20px 23px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--card);
+      box-shadow:0 8px 24px rgba(15,23,42,.07);
+    }
+    .hero-metrics .metric .num {
+      display:block;
+      color:var(--text);
+      font:650 1.9rem/1.15 ui-monospace,SFMono-Regular,Menlo,monospace;
+      letter-spacing:-.055em;
+    }
+    .hero-metrics .metric .label {
+      display:block;
+      margin-top:7px;
+      color:var(--muted);
+      font-size:.79rem;
+      line-height:1.4;
+    }
+    [data-theme="dark"] .hero-metrics .metric,
+    [data-theme="midnight"] .hero-metrics .metric {
+      background:color-mix(in srgb,var(--card) 96%,#fff 4%);
+      box-shadow:0 9px 28px rgba(0,0,0,.22);
+    }
+    @media (max-width:900px) {
+      .hero { min-height:790px !important; }
+      .hero-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:78px; }
+    }
+    @media (max-width:680px) {
+      .hero { min-height:0 !important; padding:56px 0 26px !important; }
+      .hero-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:75px; }
+      .hero-metrics .metric { min-height:94px; padding:15px; border-radius:12px; }
+      .hero-metrics .metric .num { font-size:1.55rem; }
+      .hero-metrics .metric .label { font-size:.69rem; }
+      .hero-pulse { opacity:.78; }
+    }
+
   </style>
 </head>
 <body>
@@ -573,18 +642,17 @@
         </div>
         <div class="hero-signature"><span class="signature-dot"></span> ENTERPRISE APPLICATIONS <span>·</span> BACKEND ENGINEERING <span>·</span> SYSTEM INTEGRATION</div>
       </div>
+      <div class="hero-metrics" aria-label="Professional overview">
+        <article class="metric"><span class="num">7.8</span><span class="label">Years of professional experience</span></article>
+        <article class="metric"><span class="num">4</span><span class="label">Organizations</span></article>
+        <article class="metric"><span class="num">6</span><span class="label">Enterprise project areas</span></article>
+        <article class="metric"><span class="num">7</span><span class="label">Developers mentored at TCS</span></article>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <div class="wrap">
-      <div class="metrics" aria-label="Professional overview">
-        <div class="metric"><span class="num">7.8</span><span class="label">Years of experience</span></div>
-        <div class="metric"><span class="num">4</span><span class="label">Organizations</span></div>
-        <div class="metric"><span class="num">6</span><span class="label">Enterprise project areas</span></div>
-        <div class="metric"><span class="num">7</span><span class="label">Developers mentored at TCS</span></div>
-      </div>
-
       <section id="about">
         <p class="eyebrow">01 · About</p>
         <h2>Engineering with a business-first mindset.</h2>
@@ -780,6 +848,11 @@
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         let width = 0, height = 0, dpr = 1, frame = 0, phase = 0, running = true;
 
+        const gaussian = (x, center, spread) => {
+          const n = (x - center) / spread;
+          return Math.exp(-n * n);
+        };
+
         const resizePulse = () => {
           const rect = pulseCanvas.getBoundingClientRect();
           dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -791,91 +864,119 @@
           drawPulse(phase);
         };
 
-        const gaussian = (x, center, spread) => {
-          const n = (x - center) / spread;
-          return Math.exp(-n * n);
+        const primaryY = (x, t) => {
+          const base = .79;
+          const movement = Math.sin(x * 10.5 + t * .55) * .009
+            + Math.sin(x * 21 - t * .28) * .004;
+          const peaks = gaussian(x, .37 + Math.sin(t * .15) * .012, .052) * .37
+            + gaussian(x, .79 + Math.sin(t * .12 + .8) * .014, .31) * .28;
+          return Math.max(.20, Math.min(.9, base - peaks - movement));
         };
 
-        const pointY = (x, t, secondary = false) => {
-          const base = secondary ? .805 : .735;
-          const waves = Math.sin(x * 8.6 + t * .85) * (secondary ? .018 : .027)
-            + Math.sin(x * 18.5 - t * .48) * (secondary ? .008 : .012);
-          const peaks = secondary
-            ? gaussian(x, .25 + Math.sin(t * .22) * .018, .075) * .032
-              + gaussian(x, .68 + Math.sin(t * .17 + 1) * .025, .065) * .045
-            : gaussian(x, .43 + Math.sin(t * .2) * .025, .075) * .115
-              + gaussian(x, .78 + Math.sin(t * .14 + .7) * .02, .06) * .075;
-          return Math.max(.54, Math.min(.91, base - waves - peaks));
+        const secondaryY = (x, t) => {
+          const base = .72;
+          const gentle = Math.sin(x * 8 + t * .32) * .013
+            + Math.sin(x * 19 - t * .18) * .006;
+          const rises = gaussian(x, .22 + Math.sin(t * .1) * .012, .12) * .045
+            + gaussian(x, .71 + Math.sin(t * .09 + 1) * .015, .19) * .065;
+          return Math.max(.60, Math.min(.84, base - rises - gentle));
         };
 
-        const drawPulse = (t) => {
+        const strokeCurve = (yFunction, stroke, lineWidth, t, fillArea = false, areaTop = null) => {
+          const samples = Math.max(160, Math.floor(width / 3));
+          const yAt = i => yFunction(i / samples, t) * height;
+
+          if (fillArea) {
+            const fill = ctx.createLinearGradient(0, height * .58, 0, height);
+            fill.addColorStop(0, "rgba(167,139,250,.16)");
+            fill.addColorStop(1, "rgba(167,139,250,.015)");
+            ctx.beginPath();
+            ctx.moveTo(0, height);
+            for (let i = 0; i <= samples; i++) {
+              ctx.lineTo((i / samples) * width, yAt(i));
+            }
+            ctx.lineTo(width, height);
+            ctx.closePath();
+            ctx.fillStyle = fill;
+            ctx.fill();
+          }
+
+          const gradient = ctx.createLinearGradient(0, 0, width, 0);
+          gradient.addColorStop(0, stroke.replace("0.78", "0.18"));
+          gradient.addColorStop(.42, stroke);
+          gradient.addColorStop(1, stroke.replace("0.78", "0.52"));
+
+          ctx.beginPath();
+          for (let i = 0; i <= samples; i++) {
+            const x = (i / samples) * width;
+            const y = yAt(i);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = lineWidth;
+          ctx.lineJoin = "round";
+          ctx.lineCap = "round";
+          ctx.stroke();
+
+          return { samples, yAt };
+        };
+
+        const drawPulse = t => {
           if (!ctx || !width || !height) return;
           ctx.clearRect(0, 0, width, height);
 
           const isDark = ["dark", "midnight"].includes(root.dataset.theme);
-          const blue = isDark ? "rgba(96,165,250,.72)" : "rgba(10,132,255,.42)";
-          const violet = isDark ? "rgba(192,132,252,.52)" : "rgba(139,92,246,.30)";
-          const guide = isDark ? "rgba(148,163,184,.17)" : "rgba(148,163,184,.20)";
-          const label = isDark ? "rgba(191,219,254,.48)" : "rgba(100,116,139,.42)";
+          const baseline = height * .405;
+          const red = isDark ? "rgba(252,129,129,.42)" : "rgba(248,113,113,.34)";
+          const label = isDark ? "rgba(203,213,225,.52)" : "rgba(100,116,139,.50)";
+          const blue = isDark ? "rgba(96,165,250,.86)" : "rgba(59,149,245,.60)";
+          const violet = isDark ? "rgba(192,132,252,.66)" : "rgba(167,139,250,.50)";
 
-          const guideY = height * .565;
+          // Red dashed reference line, like the reference profile's SLA guide.
           ctx.save();
-          ctx.setLineDash([7, 7]);
-          ctx.strokeStyle = guide;
-          ctx.lineWidth = 1;
+          ctx.setLineDash([8, 7]);
+          ctx.strokeStyle = red;
+          ctx.lineWidth = 1.15;
           ctx.beginPath();
-          ctx.moveTo(0, guideY);
-          ctx.lineTo(width, guideY);
+          ctx.moveTo(0, baseline);
+          ctx.lineTo(width, baseline);
           ctx.stroke();
           ctx.restore();
 
-          ctx.fillStyle = label;
-          ctx.font = "11px ui-monospace, SFMono-Regular, Menlo, monospace";
+          ctx.fillStyle = isDark ? "rgba(252,165,165,.60)" : "rgba(248,113,113,.62)";
+          ctx.font = "10px ui-monospace,SFMono-Regular,Menlo,monospace";
           ctx.textAlign = "right";
-          ctx.fillText("APPLICATION FLOW", width - 18, guideY - 9);
+          ctx.fillText("CAREER REFERENCE", width - 18, baseline - 9);
 
-          const drawSeries = (secondary) => {
-            const samples = Math.max(100, Math.floor(width / 4));
-            const yAt = (i) => pointY(i / samples, t, secondary) * height;
-            const stroke = secondary ? violet : blue;
+          // The plotted traces are a decorative engineering motif, not telemetry.
+          strokeCurve(secondaryY, violet, 1.7, t, true);
+          const main = strokeCurve(primaryY, blue, 2.8, t, false);
 
-            if (!secondary) {
-              const area = ctx.createLinearGradient(0, height * .55, 0, height);
-              area.addColorStop(0, isDark ? "rgba(96,165,250,.13)" : "rgba(10,132,255,.095)");
-              area.addColorStop(1, "rgba(139,92,246,0)");
-              ctx.beginPath();
-              ctx.moveTo(0, height);
-              for (let i = 0; i <= samples; i++) {
-                const x = (i / samples) * width;
-                ctx.lineTo(x, yAt(i));
-              }
-              ctx.lineTo(width, height);
-              ctx.closePath();
-              ctx.fillStyle = area;
-              ctx.fill();
-            }
+          // A moving highlight makes the line feel active without suggesting a live metric.
+          const markerX = (.13 + (t * .055) % .74) * width;
+          const markerIndex = Math.round((markerX / width) * main.samples);
+          const markerY = main.yAt(markerIndex);
+          ctx.beginPath();
+          ctx.arc(markerX, markerY, 4.1, 0, Math.PI * 2);
+          ctx.fillStyle = isDark ? "#93c5fd" : "#2387ed";
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(markerX, markerY, 8, 0, Math.PI * 2);
+          ctx.strokeStyle = isDark ? "rgba(147,197,253,.22)" : "rgba(35,135,237,.18)";
+          ctx.lineWidth = 2;
+          ctx.stroke();
 
-            const gradient = ctx.createLinearGradient(0, 0, width, 0);
-            gradient.addColorStop(0, secondary ? "rgba(99,102,241,.05)" : "rgba(10,132,255,.08)");
-            gradient.addColorStop(.48, stroke);
-            gradient.addColorStop(1, secondary ? "rgba(192,132,252,.34)" : "rgba(59,130,246,.60)");
-
-            ctx.beginPath();
-            for (let i = 0; i <= samples; i++) {
-              const x = (i / samples) * width;
-              const y = yAt(i);
-              if (i === 0) ctx.moveTo(x, y);
-              else ctx.lineTo(x, y);
-            }
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = secondary ? 1.7 : 2.7;
-            ctx.lineJoin = "round";
-            ctx.lineCap = "round";
-            ctx.stroke();
-          };
-
-          drawSeries(true);
-          drawSeries(false);
+          // Accurate career facts at the right edge; no fabricated latency/RPS values.
+          ctx.textAlign = "right";
+          ctx.font = "600 10px ui-monospace,SFMono-Regular,Menlo,monospace";
+          ctx.fillStyle = isDark ? "rgba(147,197,253,.76)" : "rgba(37,99,235,.72)";
+          ctx.fillText("7.8 YEARS", width - 18, height * .61);
+          ctx.fillStyle = isDark ? "rgba(216,180,254,.72)" : "rgba(139,92,246,.70)";
+          ctx.fillText("4 ORGANIZATIONS", width - 18, height * .65);
+          ctx.font = "9px ui-monospace,SFMono-Regular,Menlo,monospace";
+          ctx.fillStyle = label;
+          ctx.fillText("ILLUSTRATIVE FLOW · CAREER FACTS BELOW", width - 18, height * .695);
         };
 
         const animatePulse = () => {
@@ -897,7 +998,7 @@
             frame = window.requestAnimationFrame(animatePulse);
           }
         });
-      }
+      }      }
     })();
   </script>
 </body>
