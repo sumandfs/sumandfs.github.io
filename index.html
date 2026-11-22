@@ -502,6 +502,7 @@
           try { localStorage.setItem("suman-portfolio-theme", selected); } catch (_) {}
         }
       };
+      applyTheme(root.dataset.theme, false);
       themeButtons.forEach(button => button.addEventListener("click", () => applyTheme(button.dataset.theme)));
 
       const menuButton = document.getElementById("menuBtn");
