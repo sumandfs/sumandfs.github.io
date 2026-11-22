@@ -1,773 +1,367 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="original">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071426">
-  <meta name="description" content="Suman Kumar Das — Senior .NET Full Stack Developer with 7.8 years of experience in C#, ASP.NET MVC, Web API, SQL Server, WCF/ASMX and Azure DevOps.">
-  <title>Suman Kumar Das | Senior .NET Full Stack Developer</title>
+  <meta name="theme-color" content="#fbfbfd">
+  <meta name="description" content="Suman Kumar Das — Senior .NET Full Stack Developer with 7.8 years of experience in C#, ASP.NET MVC, Web API, SQL Server, WCF/ASMX and enterprise integration.">
+  <meta property="og:title" content="Suman Kumar Das — Senior .NET Full Stack Developer">
+  <meta property="og:description" content="Enterprise application development, backend engineering and system integration.">
+  <meta property="og:type" content="website">
+  <title>Suman Kumar Das — Senior .NET Full Stack Developer</title>
+  <link rel="preload" as="image" href="assets/profile/suman-kumar-das.jpg">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("suman-portfolio-theme");
+        document.documentElement.dataset.theme = ["light", "dark", "midnight"].includes(saved) ? saved : "light";
+      } catch (_) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
   <style>
     :root {
+      --radius: 14px;
+      --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #fbfbfd;
+      --bg-soft: #f2f5f9;
+      --card: #ffffff;
+      --line: #e1e6ed;
+      --text: #1d2735;
+      --muted: #5f6d80;
+      --accent: #0878d1;
+      --accent-2: #0a9bb5;
+      --good: #17834b;
+      --nav-bg: rgba(251,251,253,.88);
+      --terminal: #182435;
+      --terminal-text: #dbe7f5;
+      --shadow: 0 8px 28px rgba(15,23,42,.055);
+      --button-text: #fff;
+    }
+    [data-theme="dark"] {
       color-scheme: dark;
-      --bg: #071426;
-      --bg-soft: #0b1c33;
-      --panel: #10243e;
-      --panel-2: #132a47;
-      --line: rgba(166, 190, 219, .16);
-      --text: #edf4ff;
-      --muted: #a8bbd3;
-      --blue: #60a5fa;
-      --cyan: #67e8f9;
-      --white: #fff;
-      --max: 1120px;
+      --bg: #080d16;
+      --bg-soft: #0d1624;
+      --card: #111c2b;
+      --line: #263449;
+      --text: #e8eef7;
+      --muted: #9bacc1;
+      --accent: #60a5fa;
+      --accent-2: #67e8f9;
+      --good: #53d69a;
+      --nav-bg: rgba(8,13,22,.9);
+      --terminal: #050a12;
+      --terminal-text: #dbe7f5;
+      --shadow: 0 12px 34px rgba(0,0,0,.2);
+      --button-text: #071426;
+    }
+    [data-theme="midnight"] {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --bg-soft: #0f172a;
+      --card: #111a2e;
+      --line: #26344a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #22d3ee;
+      --accent-2: #a78bfa;
+      --good: #34d399;
+      --nav-bg: rgba(11,18,32,.86);
+      --terminal: #070c16;
+      --terminal-text: #dbe7f5;
+      --shadow: 0 12px 34px rgba(0,0,0,.18);
+      --button-text: #04121a;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 16px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased;
+      transition: background-color .25s ease, color .25s ease;
     }
-    a { color: var(--cyan); text-decoration: none; }
-    a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 4px; }
-    a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 4px; }
-    .skip-link { position: absolute; left: -999px; top: 8px; z-index: 20; background: var(--white); color: var(--bg); padding: 8px 12px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
+    .wrap { width: min(1080px, calc(100% - 44px)); margin: 0 auto; }
+    .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 100; padding: 9px 14px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; }
     .skip-link:focus { left: 12px; }
-    .wrap { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
-    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(7, 20, 38, .88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 70px; }
-    .brand { color: var(--text); font-weight: 850; letter-spacing: .04em; font-size: .94rem; }
-    .brand span { color: var(--cyan); }
-    .nav-links { display: flex; gap: 23px; flex-wrap: wrap; }
-    .nav-links a { color: var(--muted); font-size: .86rem; font-weight: 650; }
-    .nav-links a:hover { color: var(--white); text-decoration: none; }
-    .hero {
-      position: relative; overflow: hidden; padding: 104px 0 86px;
-      background: radial-gradient(ellipse at 82% 16%, rgba(37, 99, 235, .24), transparent 38%),
-                  radial-gradient(ellipse at 10% 0%, rgba(8, 145, 178, .14), transparent 36%),
-                  linear-gradient(145deg, #071426, #0a1b31 62%, #0a2039);
-      border-bottom: 1px solid var(--line);
+
+    nav { position: sticky; top: 0; z-index: 50; background: var(--nav-bg); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    nav .wrap { min-height: 66px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .logo { color: var(--text); font: 500 .98rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.04em; white-space: nowrap; }
+    .logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .theme-switch { display: inline-flex; align-items: center; gap: 3px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); }
+    .theme-switch button { width: 31px; height: 29px; display: grid; place-items: center; border: 0; border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+    .theme-switch button[aria-pressed="true"] { background: var(--card); color: var(--accent); box-shadow: 0 1px 5px rgba(0,0,0,.12); }
+    .theme-switch svg { width: 15px; height: 15px; }
+    .menu-btn { display: none; border: 0; background: none; color: var(--text); font-size: 1.35rem; cursor: pointer; }
+
+    .hero { position: relative; overflow: hidden; padding: 90px 0 72px; background:
+      radial-gradient(ellipse at 84% 10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 38%),
+      radial-gradient(ellipse at 8% 0%, color-mix(in srgb, var(--accent-2) 9%, transparent), transparent 38%),
+      var(--bg); border-bottom: 1px solid var(--line); }
+    .hero:after { content: ""; position: absolute; width: 400px; height: 400px; border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent); border-radius: 50%; right: -190px; bottom: -285px; box-shadow: 0 0 0 42px color-mix(in srgb, var(--accent) 4%, transparent), 0 0 0 90px color-mix(in srgb, var(--accent) 3%, transparent); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1.45fr) minmax(250px,.7fr); align-items: center; gap: 55px; }
+    .tag { display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px; border-radius: 999px; color: var(--good); background: color-mix(in srgb,var(--good) 8%,transparent); border: 1px solid color-mix(in srgb,var(--good) 28%,transparent); font: 500 .78rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .tag:before { content:""; width:7px; height:7px; border-radius:50%; background:var(--good); box-shadow:0 0 9px var(--good); }
+    h1 { margin: 22px 0 12px; max-width: 780px; font-size: clamp(2.5rem,5.4vw,4rem); line-height: 1.08; font-weight: 620; letter-spacing: -.055em; }
+    h1 .grad { background: linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .role { margin: 12px 0 18px; color: var(--accent); font: 500 .94rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .lead { max-width: 700px; color: var(--muted); font-size: 1.04rem; margin: 0; }
+    .cta { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+    .btn { min-height: 43px; display: inline-flex; align-items: center; justify-content: center; padding: 10px 17px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); font-size: .88rem; font-weight: 550; transition: transform .16s ease,border-color .16s ease; }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); border-color: var(--accent); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--button-text); }
+    .portrait-card { width: min(100%, 310px); justify-self: end; padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .portrait-wrap { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 13px; background: var(--bg-soft); }
+    .portrait-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 25%; }
+    .portrait-caption { padding: 14px 2px 1px; }
+    .portrait-caption strong { display: block; font-size: 1rem; font-weight: 600; }
+    .portrait-caption span { display: block; margin-top: 2px; color: var(--muted); font-size: .83rem; }
+
+    .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; padding: 22px 0 27px; border-bottom: 1px solid var(--line); }
+    .metric { padding: 14px 18px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric .num { display: block; color: var(--text); font: 600 1.75rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.05em; }
+    .metric .label { color: var(--muted); font-size: .8rem; }
+
+    section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font: 500 .78rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { margin: 0 0 27px; font-size: clamp(1.65rem,3vw,2.15rem); line-height: 1.2; font-weight: 600; letter-spacing: -.035em; }
+    .section-intro { max-width: 760px; margin: -12px 0 28px; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; align-items: start; }
+    .about-copy p { margin: 0 0 14px; color: var(--muted); }
+    .about-copy strong { color: var(--text); font-weight: 550; }
+    .terminal { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--terminal); box-shadow: var(--shadow); font: .8rem/1.8 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .terminal-bar { display: flex; align-items: center; gap: 6px; padding: 11px 14px; border-bottom: 1px solid rgba(148,163,184,.17); }
+    .terminal-bar i { width: 9px; height: 9px; border-radius: 50%; background: #64748b; }
+    .terminal-bar i:nth-child(1) { background: #f87171; }
+    .terminal-bar i:nth-child(2) { background: #fbbf24; }
+    .terminal-bar i:nth-child(3) { background: #34d399; }
+    .terminal pre { margin: 0; padding: 18px; color: var(--terminal-text); white-space: pre-wrap; overflow-wrap: anywhere; }
+    .terminal .k { color: var(--accent-2); }
+    .terminal .v { color: var(--good); }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+    .skill-card { min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+    .skill-card h3 { margin: 0 0 14px; font-size: 1rem; font-weight: 600; }
+    .tech-tiles { display: flex; flex-wrap: wrap; gap: 9px; }
+    .tech-tiles img { width: 70px; height: 66px; object-fit: contain; border-radius: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .chip { padding: 5px 9px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg-soft); color: var(--muted); font: 500 .74rem/1.35 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .skill-note { margin: 16px 0 0; color: var(--muted); font-size: .84rem; }
+
+    .timeline { position: relative; margin-top: 34px; }
+    .timeline:before { content:""; position:absolute; left: 177px; top:7px; bottom:8px; width:1px; background: color-mix(in srgb,var(--accent) 32%,var(--line)); }
+    .job { display:grid; grid-template-columns: 150px minmax(0,1fr); gap:55px; position:relative; padding:0 0 34px; }
+    .job:last-child { padding-bottom:0; }
+    .job:before { content:""; position:absolute; left:171px; top:7px; width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); box-shadow:0 0 0 4px var(--bg); }
+    .date { padding-top:1px; color:var(--accent); text-align:right; font:600 .72rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.04em; }
+    .job h3 { margin:0; font-size:1.1rem; font-weight:600; }
+    .position { margin:3px 0 9px; color:var(--accent); font-size:.83rem; font-weight:550; }
+    .job p { margin:0; color:var(--muted); font-size:.91rem; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:13px; }
+    .tag-chip { padding:5px 9px; border-radius:6px; border:1px solid color-mix(in srgb,var(--accent) 22%,var(--line)); background:color-mix(in srgb,var(--accent) 7%,var(--card)); color:var(--muted); font-size:.74rem; }
+
+    .project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .project { min-height:190px; display:flex; flex-direction:column; padding:22px; border-radius:var(--radius); border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow); }
+    .project-type { color:var(--accent); font:500 .72rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.09em; text-transform:uppercase; }
+    .project h3 { margin:9px 0 7px; font-size:1.05rem; font-weight:600; }
+    .project p { margin:0; color:var(--muted); font-size:.87rem; }
+    .project .stack { margin-top:auto; padding-top:16px; color:var(--accent); font-size:.77rem; font-weight:500; }
+
+    .education-card { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; padding:22px; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); }
+    .education-card h3 { margin:0 0 5px; font-size:1rem; font-weight:600; }
+    .education-card p { margin:2px 0; color:var(--muted); font-size:.88rem; }
+    .education-year { color:var(--accent); white-space:nowrap; font:500 .82rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; }
+
+    .activity-card { padding:12px; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); overflow:hidden; }
+    .activity-card img { display:block; width:100%; height:auto; }
+    .contact-card { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:22px; padding:27px; border:1px solid var(--line); border-radius:16px; background:linear-gradient(120deg,var(--card),var(--bg-soft)); box-shadow:var(--shadow); }
+    .contact-card h3 { margin:0 0 3px; font-size:1.18rem; font-weight:600; }
+    .contact-card p { margin:0; color:var(--muted); font-size:.9rem; }
+    footer { padding:26px 0 34px; color:var(--muted); text-align:center; font-size:.8rem; }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns:minmax(0,1fr) 245px; gap:28px; }
+      .nav-links { gap:15px; }
+      .about-grid { grid-template-columns:1fr; }
+      .timeline:before { left:6px; }
+      .job { grid-template-columns:1fr; gap:3px; padding-left:28px; }
+      .job:before { left:0; }
+      .date { text-align:left; }
     }
-    .hero:after { content: ""; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(103,232,249,.09); border-radius: 50%; right: -180px; bottom: -290px; box-shadow: 0 0 0 42px rgba(103,232,249,.025), 0 0 0 90px rgba(103,232,249,.02); pointer-events: none; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .8fr); gap: 58px; align-items: center; position: relative; z-index: 1; }
-    .eyebrow, .kicker { color: var(--cyan); font-weight: 800; text-transform: uppercase; letter-spacing: .17em; font-size: .73rem; }
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.055em; margin: 15px 0 13px; }
-    .role { color: #cbdcf1; font-weight: 650; font-size: clamp(1.08rem, 2vw, 1.38rem); }
-    .hero-copy { max-width: 680px; color: var(--muted); margin: 22px 0 27px; font-size: 1.04rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; padding: 11px 17px; min-height: 46px; border: 1px solid rgba(103,232,249,.45); border-radius: 9px; color: var(--text); font-size: .9rem; font-weight: 750; transition: transform .18s ease, background .18s ease; }
-    .button:hover { transform: translateY(-2px); text-decoration: none; background: rgba(96,165,250,.12); }
-    .button.primary { color: #061629; background: var(--cyan); border-color: var(--cyan); }
-    .button.primary:hover { background: #a5f3fc; color: #061629; }
-    .profile-card { padding: 26px; border: 1px solid rgba(147,197,253,.23); border-radius: 18px; background: linear-gradient(150deg, rgba(19,42,71,.92), rgba(10,29,51,.92)); box-shadow: 0 22px 70px rgba(0,0,0,.2); }
-    .monogram { display: grid; place-items: center; width: 74px; height: 74px; border-radius: 20px; color: #061629; background: linear-gradient(135deg, var(--cyan), var(--blue)); font-size: 1.5rem; font-weight: 900; letter-spacing: -.05em; }
-    .profile-card h2 { margin: 18px 0 2px; font-size: 1.2rem; }
-    .profile-card .sub { color: var(--muted); font-size: .9rem; margin: 0 0 19px; }
-    .fact { display: flex; justify-content: space-between; gap: 14px; border-top: 1px solid var(--line); padding: 10px 0; font-size: .87rem; }
-    .fact span:first-child { color: var(--muted); }
-    .fact strong { text-align: right; font-weight: 700; }
-    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: -1px; padding: 23px 0; border-bottom: 1px solid var(--line); }
-    .stat { padding: 8px 18px; border-right: 1px solid var(--line); }
-    .stat:last-child { border-right: 0; }
-    .stat strong { display: block; color: var(--white); font-size: 1.7rem; line-height: 1.25; letter-spacing: -.04em; }
-    .stat span { color: var(--muted); font-size: .78rem; }
-    section { padding: 78px 0; border-bottom: 1px solid var(--line); }
-    .section-head { max-width: 740px; margin-bottom: 30px; }
-    .section-head h2 { margin: 7px 0 7px; font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1.2; letter-spacing: -.04em; }
-    .section-head p { color: var(--muted); margin: 0; }
-    .about-grid, .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; }
-    .panel { padding: 23px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
-    .panel h3 { margin: 0 0 6px; font-size: 1.04rem; }
-    .panel p { margin: 0; color: var(--muted); font-size: .92rem; }
-    .tech-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .tech-panel { min-width: 0; }
-    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); gap: 10px; margin-top: 16px; }
-    .tech-item { min-height: 102px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 12px 8px; border: 1px solid var(--line); border-radius: 11px; background: rgba(7,20,38,.22); text-align: center; }
-    .tech-item img { width: 42px; height: 42px; object-fit: contain; }
-    .tech-item span { color: #d7e7fa; font-size: .78rem; font-weight: 700; line-height: 1.25; }
-    .tech-tags { margin-top: 15px; }
-    @media (max-width: 800px) { .tech-groups { grid-template-columns: 1fr; } }
-    .timeline { position: relative; margin-top: 36px; }
-    .timeline:before { content: ""; position: absolute; left: 178px; top: 7px; bottom: 12px; width: 1px; background: rgba(103,232,249,.26); }
-    .job { display: grid; grid-template-columns: 155px 1fr; gap: 48px; position: relative; padding: 0 0 34px; }
-    .job:last-child { padding-bottom: 0; }
-    .job:before { content: ""; position: absolute; left: 172px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--cyan); }
-    .date { color: var(--cyan); text-align: right; font-size: .76rem; font-weight: 800; letter-spacing: .08em; padding-top: 1px; }
-    .job h3 { margin: 0; font-size: 1.18rem; }
-    .job .position { color: var(--blue); font-size: .83rem; font-weight: 750; margin: 2px 0 8px; }
-    .job p, .job ul { margin: 5px 0 0; color: var(--muted); font-size: .91rem; }
-    .job ul { padding-left: 20px; }
-    .job li { margin: 4px 0; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
-    .tag { padding: 6px 10px; border-radius: 7px; border: 1px solid rgba(96,165,250,.22); background: rgba(96,165,250,.09); color: #cfe3ff; font-size: .8rem; font-weight: 650; }
-    .project { min-height: 205px; display: flex; flex-direction: column; }
-    .project .project-type { color: var(--cyan); font-size: .72rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
-    .project h3 { margin: 10px 0 6px; font-size: 1.12rem; }
-    .project p { color: var(--muted); font-size: .9rem; margin: 0; }
-    .project .stack { color: #c6d9f1; font-size: .8rem; font-weight: 650; margin-top: auto; padding-top: 17px; }
-    .note { padding: 16px 19px; margin-top: 18px; border-left: 3px solid var(--cyan); background: rgba(8,145,178,.08); border-radius: 0 9px 9px 0; color: var(--muted); font-size: .88rem; }
-    .education { display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: 20px; }
-    .education h3 { margin: 0 0 5px; }
-    .education p { margin: 0; color: var(--muted); }
-    .education .year { color: var(--cyan); font-weight: 800; white-space: nowrap; }
-    .contact-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; padding: 28px; border-radius: 16px; border: 1px solid rgba(103,232,249,.2); background: linear-gradient(120deg, rgba(19,42,71,.95), rgba(10,29,51,.95)); }
-    .contact-card h3 { margin: 0 0 4px; font-size: 1.3rem; }
-    .contact-card p { margin: 0; color: var(--muted); }
-    footer { padding: 28px 0 36px; text-align: center; color: #8196b1; font-size: .82rem; }
-    @media (max-width: 800px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-      .profile-card { max-width: 480px; }
-      .stats { grid-template-columns: repeat(2,1fr); }
-      .stat:nth-child(2) { border-right: 0; }
-      .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 18px; }
-      .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 12px 0; gap: 5px; }
-      .nav-links { gap: 13px; }
-    }
-    @media (max-width: 620px) {
-      .wrap { width: min(100% - 32px, var(--max)); }
-      .hero { padding: 70px 0 58px; }
-      section { padding: 58px 0; }
-      .about-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-      .timeline:before { left: 6px; }
-      .job { display: block; padding: 0 0 29px 28px; }
-      .job:before { left: 0; }
-      .date { text-align: left; margin-bottom: 5px; }
-      .stats { gap: 0; }
-      .stat { padding-inline: 10px; }
-      .stat strong { font-size: 1.45rem; }
-      .contact-card { padding: 22px; }
+    @media (max-width: 680px) {
+      .wrap { width:calc(100% - 32px); }
+      nav .wrap { min-height:60px; flex-wrap:wrap; padding:9px 0; }
+      .nav-right { gap:10px; }
+      .menu-btn { display:block; }
+      .nav-links { display:none; position:absolute; top:60px; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; padding:7px 16px 12px; background:var(--bg); border-bottom:1px solid var(--line); }
+      .nav-links.open { display:flex; }
+      .nav-links a { display:block; padding:10px 5px; }
+      .hero { padding:58px 0 45px; }
+      .hero-grid { grid-template-columns:1fr; gap:26px; }
+      .portrait-card { width:min(230px,75%); justify-self:start; grid-row:1; }
+      .hero-main { grid-row:2; }
+      h1 { font-size:clamp(2.35rem,11vw,3.3rem); }
+      section { padding:58px 0; }
+      .metrics { grid-template-columns:repeat(2,1fr); gap:0; }
+      .metric { padding:13px 10px; }
+      .metric:nth-child(2) { border-right:0; }
+      .metric:nth-child(3), .metric:nth-child(4) { border-top:1px solid var(--line); }
+      .skills-grid, .project-grid { grid-template-columns:1fr; }
+      .education-card { flex-direction:column; }
+      .contact-card { padding:21px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      html { scroll-behavior:auto; }
+      *, *:before, *:after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
     }
-  
-    /* Light, clean portfolio theme */
-    :root {
-      color-scheme: light;
-      --bg: #f7f8fb;
-      --bg-soft: #eef2f7;
-      --panel: #ffffff;
-      --panel-2: #f4f6f9;
-      --line: #dfe5ed;
-      --text: #172334;
-      --muted: #5e6c80;
-      --blue: #2563eb;
-      --cyan: #0891b2;
-      --white: #172334;
-    }
-    body { background: var(--bg); color: var(--text); }
-    a { color: #2563eb; }
-    a:hover { color: #1d4ed8; }
-    .skip-link { background: #fff; color: #172334; box-shadow: 0 2px 12px rgba(15,23,42,.12); }
-    .topbar { background: rgba(255,255,255,.94); border-bottom-color: #e1e6ed; }
-    .brand { color: #172334; }
-    .nav-links a { color: #536277; }
-    .nav-links a:hover { color: #172334; }
-    .hero {
-      background:
-        radial-gradient(ellipse at 82% 14%, rgba(37,99,235,.11), transparent 38%),
-        radial-gradient(ellipse at 9% 0%, rgba(8,145,178,.10), transparent 36%),
-        linear-gradient(140deg,#ffffff 0%,#f4f8fd 56%,#eef5fb 100%);
-      border-bottom-color: #dfe5ed;
-    }
-    .hero:after { border-color: rgba(37,99,235,.12); box-shadow: 0 0 0 42px rgba(37,99,235,.035), 0 0 0 90px rgba(37,99,235,.025); }
-    .eyebrow, .kicker { color: #087e9b; }
-    .role { color: #334155; }
-    .hero-copy { color: #526176; }
-    .button { border-color: #cbd5e1; color: #243449; background: #fff; }
-    .button:hover { background: #eff6ff; }
-    .button.primary { color: #fff; background: #1769d2; border-color: #1769d2; }
-    .button.primary:hover { background: #1258b5; color: #fff; }
-    .profile-card { background: rgba(255,255,255,.94); border-color: #d9e2ec; box-shadow: 0 18px 50px rgba(15,23,42,.08); }
-    .monogram { color: #fff; background: linear-gradient(135deg,#0e9dc3,#3579dc); }
-    .profile-card .sub, .fact span:first-child { color: #64748b; }
-    .fact { border-top-color: #e5eaf0; }
-    .stats { border-bottom-color: #e1e6ed; }
-    .stat strong { color: #172334; }
-    .stat span { color: #64748b; }
-    section { border-bottom-color: #e1e6ed; }
-    .section-head p { color: #5e6c80; }
-    .panel { background: #fff; border-color: #e0e6ee; box-shadow: 0 4px 16px rgba(15,23,42,.025); }
-    .panel h3 { color: #172334; }
-    .panel p { color: #5e6c80; }
-    .timeline:before { background: #cbd5e1; }
-    .job:before { background: #f7f8fb; border-color: #0e91b2; }
-    .date { color: #087e9b; }
-    .job .position { color: #2563eb; }
-    .job p, .job ul { color: #526176; }
-    .tag { border-color: #dbe3ed; background: #f3f6fa; color: #334155; }
-    .project .project-type { color: #087e9b; }
-    .project p { color: #5e6c80; }
-    .project .stack { color: #334155; }
-    .note { border-left-color: #0e91b2; background: #edf7fb; color: #526176; }
-    .education p { color: #5e6c80; }
-    .education .year { color: #087e9b; }
-    .contact-card { background: linear-gradient(120deg,#fff,#eff6ff); border-color: #dbe4ef; }
-    .contact-card p { color: #5e6c80; }
-    footer { color: #64748b; }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
-      gap: 10px;
-      align-items: stretch;
-    }
-    .tech-tile { min-width: 0; }
-    .tech-tile img {
-      display: block;
-      width: 100%;
-      max-width: 116px;
-      height: auto;
-      margin: 0 auto;
-      border-radius: 9px;
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-    .tech-tile:hover img {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(15,23,42,.10);
-    }
-    .tech-details { margin-top: 25px; padding-top: 19px; border-top: 1px solid #e1e6ed; }
-    .tech-details h3 { margin: 0 0 8px; font-size: 1rem; color: #253449; }
-    .tech-tags { margin-top: 10px; }
-    .stack-note { margin: 17px 0 0; color: #64748b; font-size: .84rem; }
-    @media (min-width: 1000px) {
-      .tech-grid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
-    }
-    @media (max-width: 620px) {
-      .tech-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
-    }
-
-  
-    /* Interview-ready two-column layout with a fixed profile rail */
-    .site-layout { min-height: 100vh; display: grid; grid-template-columns: 310px minmax(0, 1fr); }
-    .profile-sidebar {
-      position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
-      padding: 34px 22px 28px; background: #fff; border-right: 1px solid #dfe5ed;
-    }
-    .sidebar-profile { width: 100%; max-width: 260px; margin: 0 auto; }
-    .sidebar-photo {
-      display: block; width: 180px; height: 180px; margin: 0 auto 22px;
-      border-radius: 50%; object-fit: cover; object-position: center;
-      border: 1px solid #dce3ec; box-shadow: 0 8px 24px rgba(15,23,42,.07);
-      background: #fff;
-    }
-    .sidebar-profile h2 { margin: 0; color: #172334; font-size: 1.5rem; line-height: 1.25; letter-spacing: -.035em; }
-    .sidebar-handle { color: #64748b; font-size: .92rem; margin: 4px 0 17px; }
-    .sidebar-role { color: #172334 !important; font-size: 1rem !important; font-weight: 800; line-height: 1.45; margin: 0 0 11px !important; }
-    .sidebar-summary { color: #526176 !important; font-size: .9rem !important; line-height: 1.65; margin: 0 0 19px !important; }
-    .sidebar-meta { border-top: 1px solid #dfe5ed; padding-top: 12px; }
-    .sidebar-meta > div { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 8px 0; }
-    .sidebar-meta span { color: #64748b; font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .sidebar-meta strong, .sidebar-meta a { color: #243449; font-size: .86rem; font-weight: 650; overflow-wrap: anywhere; }
-    .sidebar-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
-    .sidebar-actions .button { min-height: 38px; padding: 8px 11px; font-size: .8rem; }
-    .site-content { min-width: 0; }
-    .nav { justify-content: flex-end; }
-    .nav-links { gap: clamp(12px, 1.6vw, 23px); }
-    .hero { padding: 70px 0 62px; }
-    .hero-grid { grid-template-columns: minmax(0, 1fr); max-width: 850px; }
-    .hero h1 { color: #172334; }
-    .activity-card {
-      padding: 14px; background: #fff; border: 1px solid #dfe5ed;
-      border-radius: 12px; box-shadow: 0 5px 18px rgba(15,23,42,.035);
-    }
-    .activity-card img { display: block; width: 100%; height: auto; min-height: 180px; object-fit: contain; }
-    .activity-link { margin: 11px 0 0; color: #64748b; font-size: .84rem; }
-    .activity-link a { color: #2563eb; font-weight: 700; }
-    @media (max-width: 1050px) {
-      .site-layout { grid-template-columns: 280px minmax(0,1fr); }
-      .profile-sidebar { padding-inline: 18px; }
-      .sidebar-photo { width: 160px; height: 160px; }
-      .nav-links { gap: 12px; }
-      .nav-links a { font-size: .8rem; }
-    }
-    @media (max-width: 820px) {
-      .site-layout { display: block; }
-      .profile-sidebar { position: relative; height: auto; overflow: visible; padding: 26px 20px 22px; border-right: 0; border-bottom: 1px solid #dfe5ed; }
-      .sidebar-profile { max-width: 520px; text-align: center; }
-      .sidebar-photo { width: 150px; height: 150px; margin-bottom: 13px; }
-      .sidebar-meta { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 14px; text-align: left; }
-      .sidebar-actions { justify-content: center; }
-      .nav { align-items: center; flex-direction: row; min-height: 60px; padding: 10px 0; }
-      .nav-links { justify-content: center; flex-wrap: wrap; }
-      .hero { padding: 48px 0; }
-    }
-    @media (max-width: 520px) {
-      .sidebar-meta { grid-template-columns: 1fr; }
-      .nav-links a { font-size: .76rem; }
-      .activity-card { padding: 7px; }
-    }
-
-  
-    /* Final visual polish: profile-README inspired header and clean work history */
-    :root {
-      --bg: #ffffff;
-      --bg-soft: #f6f8fa;
-      --panel: #ffffff;
-      --panel-2: #f6f8fa;
-      --line: #d8dee7;
-      --text: #1f2328;
-      --muted: #57606a;
-      --blue: #0969da;
-      --cyan: #0969da;
-      --white: #1f2328;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: #fff; color: #1f2328; font-family: Inter, "Segoe UI", Arial, sans-serif; }
-    .topbar { background: rgba(255,255,255,.96); border-bottom: 1px solid #d8dee7; box-shadow: 0 1px 2px rgba(31,35,40,.03); }
-    .nav { min-height: 62px; }
-    .nav-links a { color: #485465; font-weight: 700; font-size: .88rem; }
-    .nav-links a:hover { color: #0969da; }
-    .hero {
-      padding: 62px 0 28px;
-      background: #fff;
-      border-bottom: 0;
-    }
-    .hero:after { display: none; }
-    .hero-grid { max-width: 1180px; }
-    .hero-main { width: 100%; }
-    .eyebrow { color: #0969da; font-size: .72rem; letter-spacing: .19em; font-weight: 800; }
-    .hero h1 {
-      margin: 15px 0 12px; color: #1f2328; font-size: clamp(2.6rem,5.5vw,4.55rem);
-      line-height: 1.04; letter-spacing: -.045em; font-weight: 850;
-    }
-    .hero-rule { width: 100%; height: 1px; background: #d8dee7; margin: 18px 0 17px; }
-    .hero .role { color: #303b4b; font-size: 1.06rem; font-weight: 750; margin: 0 0 12px; }
-    .hero-copy { max-width: 940px; color: #57606a; font-size: 1rem; line-height: 1.75; margin: 0 0 16px; }
-    .hero-meta { display:flex; flex-wrap:wrap; gap:12px 24px; margin: 0 0 22px; color:#687386; font-size:.67rem; font-weight:800; letter-spacing:.16em; }
-    .actions.hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; }
-    .hero-actions .button {
-      min-height:40px; padding:9px 17px; border:1px solid #c9d1dc; border-radius:5px;
-      background:#fff; color:#263445; font-size:.74rem; letter-spacing:.13em; font-weight:800;
-      box-shadow:0 1px 1px rgba(31,35,40,.03); transition:background .15s ease,border-color .15s ease,transform .15s ease;
-    }
-    .hero-actions .button:hover { background:#f6f8fa; border-color:#0969da; color:#0969da; transform:translateY(-1px); text-decoration:none; }
-    .hero-actions .button.primary { color:#fff; background:#0969da; border-color:#0969da; }
-    .hero-actions .button.primary:hover { background:#0759b9; color:#fff; }
-    .status-strip {
-      display:flex; align-items:center; flex-wrap:wrap; gap:9px 13px;
-      margin-top:23px; padding:12px 14px; border-top:1px solid #d8dee7; border-bottom:1px solid #d8dee7;
-      background:#f6f8fa; color:#404b5a; font-size:.78rem;
-    }
-    .status-dot { width:8px; height:8px; border-radius:50%; background:#1a9b63; box-shadow:0 0 0 3px #dcfce7; }
-    .status-label { color:#718096; font-size:.62rem; font-weight:850; letter-spacing:.14em; }
-    .status-strip strong { color:#253246; font-size:.78rem; font-weight:700; }
-    .status-divider { height:18px; width:1px; background:#d8dee7; margin:0 5px; }
-    main .stats { border-top:0; border-bottom:1px solid #d8dee7; background:#fff; }
-    .stat strong { color:#1f2328; }
-    .stat span { color:#657184; }
-    section { padding:64px 0; border-bottom:1px solid #e5e9ef; }
-    .section-head { max-width:850px; margin-bottom:26px; }
-    .kicker { color:#0969da; font-size:.69rem; letter-spacing:.17em; }
-    .section-head h2 { color:#1f2328; font-size:clamp(1.8rem,3vw,2.4rem); }
-    .section-head p { color:#5c6675; line-height:1.75; }
-    .panel { border:1px solid #dfe4eb; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025); }
-    .panel h3 { color:#202b3a; }
-    .panel p { color:#596576; }
-    /* Work history timeline: blue rail and a marker for each company */
-    .timeline {
-      position:relative; display:grid; gap:24px; margin-top:30px; padding-left:48px;
-    }
-    .timeline:before {
-      content:""; display:block; position:absolute; left:15px; top:20px; bottom:28px;
-      width:2px; background:#0969da; border-radius:2px;
-    }
-    .job {
-      display:block; position:relative; min-width:0;
-      padding:24px 28px; margin:0; border:1px solid #dfe4eb; border-radius:13px;
-      background:#fff; box-shadow:0 3px 12px rgba(31,35,40,.035);
-    }
-    .job:last-child { padding-bottom:24px; }
-    /* Past roles use simple dots; only the current role is highlighted. */
-    .job:before {
-      content:""; display:block; position:absolute; z-index:1;
-      left:-39px; top:32px; width:12px; height:12px; border-radius:50%;
-      background:#0969da; border:0; outline:0; box-shadow:none;
-    }
-    .job:first-child:before {
-      left:-42px; top:27px; width:18px; height:18px;
-      background:#fff; border:5px solid #0969da; outline:3px solid #dbeafe;
-      box-shadow:0 0 0 6px rgba(9,105,218,.12), 0 0 18px rgba(9,105,218,.14);
-    }
-    .date {
-      display:inline-flex; align-items:center; position:absolute; top:23px; right:26px;
-      padding:5px 0; text-align:right; border-radius:0; color:#0969da; background:transparent;
-      font-size:.77rem; font-weight:750; letter-spacing:.035em; line-height:1.4;
-    }
-    .job h3 { padding-right:190px; }
-    .job h3 { color:#1f2937; font-size:1.16rem; margin:0 0 3px; }
-    .job .position { color:#0969da; font-size:.83rem; font-weight:750; margin:3px 0 9px; }
-    .job p, .job ul { color:#586576; font-size:.92rem; line-height:1.72; }
-    .job li { margin:5px 0; }
-    .tag { border:1px solid #d8e0ea; background:#f6f8fa; color:#344256; border-radius:5px; padding:6px 9px; font-size:.76rem; font-weight:650; }
-    .project .project-type { color:#0969da; }
-    .project p, .education p, .contact-card p { color:#586576; }
-    .note { border-left-color:#0969da; background:#f1f6fd; color:#586576; }
-    .contact-card { background:#f6f8fa; border-color:#dfe4eb; }
-    .activity-card { padding:14px; border:1px solid #dfe4eb; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(31,35,40,.025); }
-    .activity-card img { min-height:160px; }
-    footer { color:#687386; border-top:1px solid #e5e9ef; background:#fff; }
-    @media (max-width:900px) {
-      .job { display:block; padding:21px 20px; }
-      .date { position:static; display:block; text-align:left; margin:0 0 8px; padding:0; }
-      .job h3 { padding-right:0; }
-      .status-divider { display:none; }
-    }
-    @media (max-width:620px) {
-      .hero { padding:38px 0 20px; }
-      .hero h1 { font-size:clamp(2.25rem,11vw,3.2rem); }
-      .hero-meta { gap:9px 14px; }
-      .hero-actions .button { flex:1 1 42%; }
-      section { padding:48px 0; }
-      .timeline { padding-left:34px; gap:18px; }
-      .timeline:before { left:10px; }
-      .job:before { left:-29px; top:29px; width:11px; height:11px; }
-      .job:first-child:before { left:-32px; top:24px; width:17px; height:17px; }
-      .job { padding:18px 16px; }
-      .job:last-child { padding-bottom:18px; }
-      .date { position:static; display:block; text-align:left; margin:0 0 8px; padding:0; }
-      .job h3 { padding-right:0; }
-    }
-
-  
-    .building-table-wrap { width:100%; overflow-x:auto; border:1px solid #d7dee7; background:#fff; }
-    .building-table { width:100%; min-width:760px; border-collapse:collapse; table-layout:fixed; color:#303b49; font-size:.88rem; line-height:1.65; }
-    .building-table th, .building-table td { padding:15px 16px; text-align:left; vertical-align:top; border-right:1px solid #d7dee7; border-bottom:1px solid #d7dee7; }
-    .building-table th:last-child, .building-table td:last-child { border-right:0; }
-    .building-table tbody tr:last-child td { border-bottom:0; }
-    .building-table thead th { background:#f6f8fa; color:#4a5667; font-size:.68rem; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
-    .building-table th:nth-child(1), .building-table td:nth-child(1) { width:22%; }
-    .building-table th:nth-child(2), .building-table td:nth-child(2) { width:21%; }
-    .building-table td strong { display:block; color:#202b3a; font-weight:800; }
-    .table-org { display:block; margin-top:3px; color:#657184; font-size:.8rem; font-weight:650; }
-    .building-table tbody tr:hover { background:#f8fbff; }
-    @media (max-width:620px) {
-      .building-table { min-width:700px; font-size:.82rem; }
-      .building-table th, .building-table td { padding:12px; }
-    }
-
-  
-    /* Theme chooser and presentation modes */
-    .nav { justify-content: space-between; gap: 18px; }
-    .theme-control { position: relative; flex: 0 0 auto; margin-left: 12px; }
-    .theme-trigger {
-      display: inline-flex; align-items: center; gap: 9px; min-height: 38px;
-      padding: 8px 12px; border: 1px solid #cfd8e3; border-radius: 999px;
-      background: #fff; color: #263445; font: inherit; font-size: .78rem;
-      font-weight: 750; cursor: pointer; box-shadow: 0 2px 8px rgba(15,23,42,.045);
-      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
-    }
-    .theme-trigger:hover { border-color: #0969da; transform: translateY(-1px); box-shadow: 0 5px 14px rgba(15,23,42,.08); }
-    .theme-trigger:focus-visible, .theme-menu button:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; }
-    .theme-indicator { width: 9px; height: 9px; border-radius: 50%; background: #0969da; box-shadow: 0 0 0 3px #dbeafe; }
-    .theme-current { color: #0969da; }
-    .theme-chevron { color: #7b8797; font-size: .9rem; }
-    .theme-menu {
-      position: absolute; top: calc(100% + 10px); right: 0; z-index: 30;
-      width: 174px; padding: 6px; border: 1px solid #d8dee7; border-radius: 12px;
-      background: #fff; box-shadow: 0 14px 36px rgba(15,23,42,.16);
-    }
-    .theme-menu[hidden] { display: none !important; }
-    .theme-menu button {
-      width: 100%; display: flex; align-items: center; gap: 10px;
-      padding: 9px 10px; border: 0; border-radius: 8px; background: transparent;
-      color: #263445; text-align: left; font: inherit; font-size: .82rem;
-      font-weight: 650; cursor: pointer;
-    }
-    .theme-menu button:hover, .theme-menu button[aria-checked="true"] { background: #f1f6fd; }
-    .theme-swatch { width: 17px; height: 17px; border: 1px solid #cbd5e1; border-radius: 50%; flex: 0 0 auto; }
-    .theme-swatch-original { background: linear-gradient(135deg,#fff 0 50%,#0969da 50%); }
-    .theme-swatch-light { background: linear-gradient(135deg,#f2f8ff 0 50%,#0d9488 50%); }
-    .theme-swatch-dark { background: linear-gradient(135deg,#101c2d 0 50%,#67e8f9 50%); border-color:#52647b; }
-    .theme-check { margin-left: auto; color: #0969da; opacity: 0; }
-    .theme-menu button[aria-checked="true"] .theme-check { opacity: 1; }
-    .hero h1 {
-      color: #1f2328; font-size: clamp(2.45rem, 4.7vw, 3.9rem);
-      font-weight: 620; letter-spacing: -.045em; line-height: 1.12;
-      text-transform: none;
-    }
-    @media (max-width: 820px) {
-      .nav { flex-direction: row; align-items: center; flex-wrap: wrap; justify-content: space-between; }
-      .nav-links { flex: 1 1 auto; }
-      .theme-control { margin-left: auto; }
-    }
-    @media (max-width: 600px) {
-      .nav { gap: 10px; }
-      .nav-links { order: 2; flex: 1 1 100%; justify-content: flex-start; }
-      .theme-control { order: 1; }
-    }
-
-    /* Soft light theme */
-    html[data-theme="light"] body,
-    html[data-theme="light"] .site-content { background: #f2f7fc; color: #1b2a3d; }
-    html[data-theme="light"] .profile-sidebar,
-    html[data-theme="light"] .topbar,
-    html[data-theme="light"] main .stats,
-    html[data-theme="light"] footer { background: #f8fbff; }
-    html[data-theme="light"] .profile-sidebar,
-    html[data-theme="light"] .topbar { border-color: #d6e2ef; }
-    html[data-theme="light"] .hero { background: linear-gradient(135deg,#f1f8ff 0%,#f7fbff 52%,#eaf5fb 100%); }
-    html[data-theme="light"] .hero h1,
-    html[data-theme="light"] .sidebar-profile h2 { color: #172d48; }
-    html[data-theme="light"] .hero-copy,
-    html[data-theme="light"] .sidebar-summary,
-    html[data-theme="light"] .job p,
-    html[data-theme="light"] .section-head p { color: #51677f !important; }
-    html[data-theme="light"] .panel,
-    html[data-theme="light"] .job,
-    html[data-theme="light"] .activity-card,
-    html[data-theme="light"] .building-table-wrap { background: #fff; border-color: #d8e4f0; }
-    html[data-theme="light"] .contact-card { background: linear-gradient(120deg,#fff,#eaf5ff); }
-    html[data-theme="light"] .tag { background: #edf5fd; border-color: #d4e3f2; color: #29435e; }
-    html[data-theme="light"] .status-strip { background: #eaf2fa; border-color: #d8e4f0; }
-    html[data-theme="light"] .theme-trigger { background: #fff; border-color: #c7d7e8; }
-    html[data-theme="light"] .theme-indicator { background: #0d9488; box-shadow: 0 0 0 3px #ccfbf1; }
-    html[data-theme="light"] .theme-current { color: #0d9488; }
-
-    /* Dark theme */
-    html[data-theme="dark"] { color-scheme: dark; }
-    html[data-theme="dark"] body,
-    html[data-theme="dark"] .site-content { background: #0b1422; color: #e7eef8; }
-    html[data-theme="dark"] .profile-sidebar { background: #101e30; border-color: #263a52; }
-    html[data-theme="dark"] .topbar { background: rgba(12,24,40,.94); border-color: #263a52; }
-    html[data-theme="dark"] .nav-links a { color: #b4c5da; }
-    html[data-theme="dark"] .nav-links a:hover { color: #7dd3fc; }
-    html[data-theme="dark"] .hero { background: radial-gradient(ellipse at 82% 14%,rgba(37,99,235,.22),transparent 38%), linear-gradient(135deg,#0b1422,#10243d 70%,#102b40); }
-    html[data-theme="dark"] .hero h1,
-    html[data-theme="dark"] .sidebar-profile h2,
-    html[data-theme="dark"] .sidebar-role,
-    html[data-theme="dark"] .job h3,
-    html[data-theme="dark"] .panel h3,
-    html[data-theme="dark"] .section-head h2,
-    html[data-theme="dark"] .contact-card h3 { color: #edf5ff !important; }
-    html[data-theme="dark"] .hero-copy,
-    html[data-theme="dark"] .sidebar-summary,
-    html[data-theme="dark"] .sidebar-meta strong,
-    html[data-theme="dark"] .sidebar-meta a,
-    html[data-theme="dark"] .job p,
-    html[data-theme="dark"] .job ul,
-    html[data-theme="dark"] .section-head p,
-    html[data-theme="dark"] .panel p,
-    html[data-theme="dark"] .project p,
-    html[data-theme="dark"] .education p,
-    html[data-theme="dark"] .contact-card p,
-    html[data-theme="dark"] .activity-link,
-    html[data-theme="dark"] .stack-note { color: #afc0d5 !important; }
-    html[data-theme="dark"] .sidebar-meta,
-    html[data-theme="dark"] .job,
-    html[data-theme="dark"] .panel,
-    html[data-theme="dark"] .activity-card,
-    html[data-theme="dark"] .building-table-wrap,
-    html[data-theme="dark"] .contact-card { background: #12243a; border-color: #2b4059; }
-    html[data-theme="dark"] .sidebar-meta { border-top-color: #2b4059; }
-    html[data-theme="dark"] .job { box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-    html[data-theme="dark"] .tag { background: #1a3451; border-color: #34516f; color: #d5e7fb; }
-    html[data-theme="dark"] .status-strip,
-    html[data-theme="dark"] main .stats { background: #101e30; border-color: #2b4059; }
-    html[data-theme="dark"] .status-strip strong,
-    html[data-theme="dark"] .stat strong,
-    html[data-theme="dark"] .building-table td strong { color: #edf5ff; }
-    html[data-theme="dark"] .status-label,
-    html[data-theme="dark"] .stat span,
-    html[data-theme="dark"] .table-org { color: #a9bdd4; }
-    html[data-theme="dark"] .status-divider { background: #344b66; }
-    html[data-theme="dark"] .building-table { color: #d3e1f1; }
-    html[data-theme="dark"] .building-table th,
-    html[data-theme="dark"] .building-table td { border-color: #30465f; }
-    html[data-theme="dark"] .building-table thead th { background: #172d46; color: #b8cce2; }
-    html[data-theme="dark"] .building-table tbody tr:hover { background: #19314b; }
-    html[data-theme="dark"] .note { background: #142c43; color: #b6c8dc; }
-    html[data-theme="dark"] footer { background: #0b1422; color: #90a6c0; border-color: #263a52; }
-    html[data-theme="dark"] .button,
-    html[data-theme="dark"] .hero-actions .button { background: #162a42; border-color: #3a5574; color: #e5effb; }
-    html[data-theme="dark"] .button:hover,
-    html[data-theme="dark"] .hero-actions .button:hover { background: #203c5b; border-color: #67e8f9; color: #fff; }
-    html[data-theme="dark"] .button.primary,
-    html[data-theme="dark"] .hero-actions .button.primary { background: #67d9e8; border-color: #67d9e8; color: #082033; }
-    html[data-theme="dark"] .theme-trigger { background: #162a42; border-color: #3a5574; color: #e5effb; }
-    html[data-theme="dark"] .theme-current { color: #67e8f9; }
-    html[data-theme="dark"] .theme-indicator { background: #67e8f9; box-shadow: 0 0 0 3px rgba(103,232,249,.16); }
-    html[data-theme="dark"] .theme-menu { background: #13263c; border-color: #344d69; box-shadow: 0 16px 36px rgba(0,0,0,.38); }
-    html[data-theme="dark"] .theme-menu button { color: #e5effb; }
-    html[data-theme="dark"] .theme-menu button:hover,
-    html[data-theme="dark"] .theme-menu button[aria-checked="true"] { background: #203b58; }
-    html[data-theme="dark"] .theme-check { color: #67e8f9; }
-    html[data-theme="dark"] .timeline:before { background: #3b82f6; }
-    html[data-theme="dark"] .job:before { background: #13263c; }
-    html[data-theme="dark"] .job:first-child:before { background: #67e8f9; border-color: #67e8f9; outline-color: #20415e; }
-    html[data-theme="dark"] .date,
-    html[data-theme="dark"] .job .position,
-    html[data-theme="dark"] .kicker,
-    html[data-theme="dark"] .eyebrow { color: #67dff0; }
-    html[data-theme="dark"] a { color: #7dd3fc; }
-    html[data-theme="dark"] a:hover { color: #e0f2fe; }
-
-  
-    /* Typography refinement: confident but not heavy */
-    body { font-weight: 400; letter-spacing: normal; }
-    .nav-links a { font-weight: 550 !important; letter-spacing: 0 !important; }
-    .sidebar-profile h2 {
-      font-size: 1.38rem !important;
-      font-weight: 600 !important;
-      letter-spacing: -.025em !important;
-    }
-    .sidebar-role {
-      font-size: .96rem !important;
-      font-weight: 550 !important;
-      letter-spacing: -.01em !important;
-    }
-    .sidebar-meta span { font-weight: 650 !important; }
-    .sidebar-meta strong, .sidebar-meta a { font-weight: 500 !important; }
-    .sidebar-actions .button {
-      font-weight: 550 !important;
-      letter-spacing: 0 !important;
-    }
-    .hero h1 {
-      font-size: clamp(2.35rem, 4.5vw, 3.65rem) !important;
-      font-weight: 600 !important;
-      letter-spacing: -.045em !important;
-      line-height: 1.12 !important;
-    }
-    .hero .role { font-weight: 550 !important; }
-    .eyebrow, .kicker { font-weight: 650 !important; letter-spacing: .14em !important; }
-    .hero-meta { font-weight: 650 !important; letter-spacing: .12em !important; }
-    .hero-actions .button {
-      font-weight: 600 !important;
-      letter-spacing: .075em !important;
-    }
-    .status-label { font-weight: 650 !important; letter-spacing: .11em !important; }
-    .status-strip strong { font-weight: 550 !important; }
-    .stat strong { font-weight: 600 !important; }
-    .section-head h2 { font-weight: 600 !important; letter-spacing: -.025em !important; }
-    .panel h3, .job h3, .project h3, .education h3, .contact-card h3 {
-      font-weight: 600 !important;
-      letter-spacing: -.015em !important;
-    }
-    .job .position { font-weight: 550 !important; }
-    .date { font-weight: 650 !important; letter-spacing: .02em !important; }
-    .tag { font-weight: 500 !important; }
-    .building-table thead th { font-weight: 650 !important; }
-    .building-table td strong { font-weight: 600 !important; }
-    .theme-trigger { font-weight: 550 !important; }
-    .theme-menu button { font-weight: 500 !important; }
-    .button { font-weight: 550 !important; letter-spacing: .015em !important; }
-    @media (max-width: 620px) {
-      .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem) !important; }
-    }
-
-  
-    /* Remove bold emphasis from keywords inside descriptive sentences */
-    .status-strip strong { font-weight: 500 !important; }
-    .sidebar-meta strong { font-weight: 500 !important; }
-    .building-table td strong { font-weight: 550 !important; }
-    .job p strong, .project p strong, .panel p strong { font-weight: 500 !important; }
-
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="site-layout">
-    <aside class="profile-sidebar" aria-label="Profile">
-      <div class="sidebar-profile">
-        <img class="sidebar-photo" src="assets/profile/suman-kumar-das.jpg" alt="Portrait of Suman Kumar Das" width="180" height="180">
-        <h2>Suman Kumar Das</h2>
-        <p class="sidebar-role">Senior .NET Full Stack Developer</p>
-        
-        <div class="sidebar-meta">
-          <div><span>Present company</span><strong>Tata Consultancy Services</strong></div>
-          <div><span>Location</span><strong>Bengaluru, India</strong></div>
-          <div><span>Email</span><a href="mailto:dassumandas1991@gmail.com">dassumandas1991@gmail.com</a></div>
+
+  <nav aria-label="Main navigation">
+    <div class="wrap">
+      <a href="#top" class="logo">~/suman<span>.dev</span></a>
+      <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-switch" role="group" aria-label="Colour theme">
+          <button type="button" data-theme="light" aria-label="Light theme" title="Light" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </button>
+          <button type="button" data-theme="dark" aria-label="Dark theme" title="Dark" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <button type="button" data-theme="midnight" aria-label="Midnight theme" title="Midnight" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-9 4 12 3-7h4"/></svg>
+          </button>
         </div>
-        <div class="sidebar-actions">
-          <a class="button primary" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
-          <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </aside>
-    <div class="site-content">
-  <div class="topbar">
-    <div class="wrap nav">
-      
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-        <a href="#projects">Projects</a><a href="#activity">Activity</a><a href="#education">Education</a><a href="#contact">Contact</a>
-      </nav>
-      <div class="theme-control">
-        <button class="theme-trigger" id="themeToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="themeMenu">
-          <span class="theme-indicator" aria-hidden="true"></span>
-          <span>Theme</span>
-          <span class="theme-current" id="themeCurrent">Original</span>
-          <span class="theme-chevron" aria-hidden="true">⌄</span>
-        </button>
-        <div class="theme-menu" id="themeMenu" role="menu" hidden>
-          <button type="button" role="menuitemradio" aria-checked="true" data-theme-choice="original"><span class="theme-swatch theme-swatch-original"></span><span>Original</span><span class="theme-check">✓</span></button>
-          <button type="button" role="menuitemradio" aria-checked="false" data-theme-choice="light"><span class="theme-swatch theme-swatch-light"></span><span>Light</span><span class="theme-check">✓</span></button>
-          <button type="button" role="menuitemradio" aria-checked="false" data-theme-choice="dark"><span class="theme-swatch theme-swatch-dark"></span><span>Dark</span><span class="theme-check">✓</span></button>
-        </div>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
       </div>
     </div>
-  </div>
+  </nav>
 
   <header class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-main">
-        <div class="eyebrow">Senior .NET Full Stack Developer · Bengaluru, India</div>
-        <h1>Suman Kumar Das</h1>
-        <div class="hero-rule"></div>
-        <div class="role">Enterprise Applications · Backend Engineering · System Integration</div>
-        <p class="hero-copy">I build and support business-critical web applications using C#, ASP.NET, Web API and SQL Server. Across 7.8 years, I have contributed to enterprise, manufacturing, predictive-analytics and public-sector platforms — from application development and system integration to production support.</p>
-        <div class="hero-meta">
-          <span>BENGALURU, INDIA</span><span>7.8 YEARS EXPERIENCE</span><span>TATA CONSULTANCY SERVICES</span>
-        </div>
-        <div class="actions hero-actions">
-          <a class="button primary" href="#projects">PORTFOLIO</a>
-          <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LINKEDIN</a>
-          <a class="button" href="#skills">TECH STACK</a>
-          <a class="button" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener">RÉSUMÉ</a>
-          <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GITHUB</a>
-          <a class="button" href="#about">PROFILE</a>
-        </div>
-        <div class="status-strip">
-          <span class="status-dot"></span><span class="status-label">CURRENT ROLE</span><strong>System Engineer · TCS</strong>
-          <span class="status-divider"></span><span class="status-label">CORE STACK</span><strong>C# · ASP.NET · SQL Server</strong>
-          <span class="status-divider"></span><span class="status-label">FOCUS</span><strong>Enterprise Integration</strong>
+        <div class="tag">System Engineer · Tata Consultancy Services</div>
+        <h1>Hi, I'm <span class="grad">Suman Kumar Das</span>.<br>I build enterprise applications.</h1>
+        <p class="role">Senior .NET Full Stack Developer · 7.8 years · Bengaluru, India</p>
+        <p class="lead">I build and support business-critical web applications using C#, ASP.NET, Web API and SQL Server. My experience spans enterprise application development, SAP BW/ECC integration, database engineering, production troubleshooting and delivery support.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">Explore projects</a>
+          <a class="btn" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/sumandfs" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn" href="assets/Suman_Kumar_Das_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
         </div>
       </div>
+      <aside class="portrait-card" aria-label="Profile photograph">
+        <div class="portrait-wrap"><img src="assets/profile/suman-kumar-das.jpg" alt="Portrait of Suman Kumar Das" width="600" height="600"></div>
+        <div class="portrait-caption"><strong>Suman Kumar Das</strong><span>Senior .NET Full Stack Developer</span></div>
+      </aside>
     </div>
   </header>
 
   <main id="main">
     <div class="wrap">
-      <div class="stats" aria-label="Career highlights">
-        <div class="stat"><strong>7.8</strong><span>Years of professional experience</span></div>
-        <div class="stat"><strong>4</strong><span>Organizations</span></div>
-        <div class="stat"><strong>6</strong><span>Project areas</span></div>
-        <div class="stat"><strong>7</strong><span>Developers led at TCS</span></div>
+      <div class="metrics" aria-label="Professional overview">
+        <div class="metric"><span class="num">7.8</span><span class="label">Years of experience</span></div>
+        <div class="metric"><span class="num">4</span><span class="label">Organizations</span></div>
+        <div class="metric"><span class="num">6</span><span class="label">Enterprise project areas</span></div>
+        <div class="metric"><span class="num">7</span><span class="label">Developers mentored at TCS</span></div>
       </div>
 
       <section id="about">
-        <div class="section-head">
-          <div class="kicker">01 / Introduction</div>
-          <h2>Engineering with a business-first mindset.</h2>
-          <p>My work sits at the intersection of application development, enterprise integration and reliable data access. I focus on understanding the business flow, building maintainable modules and resolving issues that affect users and operations.</p>
-        </div>
+        <p class="eyebrow">01 · About</p>
+        <h2>Engineering with a business-first mindset.</h2>
+        <p class="section-intro">My work sits at the intersection of application development, enterprise integration and reliable data access. I focus on understanding the business flow, building maintainable modules and resolving issues that affect users and operations.</p>
         <div class="about-grid">
-          <article class="panel"><h3>Backend & application development</h3><p>Hands-on development with C#, ASP.NET, ASP.NET MVC, Web API, WCF/ASMX web services and ADO.NET.</p></article>
-          <article class="panel"><h3>Database engineering</h3><p>SQL Server development with T-SQL, stored procedures, views, data validation and query performance investigation.</p></article>
-          <article class="panel"><h3>Enterprise integration</h3><p>Experience supporting system-to-system data flows, including SAP BW and SAP ECC integration through web services.</p></article>
-          <article class="panel"><h3>Delivery & production support</h3><p>Azure DevOps build and deployment workflows, Git/TFS version control, debugging, unit testing, UAT and production troubleshooting.</p></article>
+          <div class="about-copy">
+            <p>I’m a <strong>Senior .NET Full Stack Developer</strong> with 7.8 years of experience across enterprise applications, manufacturing systems, predictive analytics and public-sector platforms.</p>
+            <p>My strongest professional experience is in <strong>C#, .NET Framework, ASP.NET, ASP.NET MVC, Web API, WCF/ASMX, ADO.NET and SQL Server</strong>. I contribute from application development and integration through testing, deployment and production support.</p>
+            <p>At TCS, I currently work on <strong>MyAssignments</strong>, a three-tier enterprise application that integrates SAP BW and SAP ECC data for business reporting.</p>
+          </div>
+          <div class="terminal" aria-label="Professional profile summary">
+            <div class="terminal-bar"><i></i><i></i><i></i></div>
+            <pre><span class="k">developer:</span> <span class="v">"Suman Kumar Das"</span>
+<span class="k">role:</span> <span class="v">"Senior .NET Full Stack Developer"</span>
+<span class="k">organization:</span> <span class="v">"Tata Consultancy Services"</span>
+<span class="k">location:</span> <span class="v">"Bengaluru, India"</span>
+<span class="k">experience:</span> <span class="v">"7.8 years"</span>
+<span class="k">core:</span> [<span class="v">"C#"</span>, <span class="v">".NET"</span>, <span class="v">"ASP.NET"</span>, <span class="v">"SQL Server"</span>]
+<span class="k">integration:</span> [<span class="v">"WCF"</span>, <span class="v">"ASMX"</span>, <span class="v">"SAP BW/ECC"</span>]
+<span class="k">focus:</span> <span class="v">"Enterprise application engineering"</span></pre>
+          </div>
         </div>
       </section>
 
-      <section id="experience">
-        <div class="section-head">
-          <div class="kicker">02 / Track record</div>
-          <h2>Where I've Built &amp; Delivered</h2>
-          <p>Over 7.8 years, I've worked across enterprise applications, manufacturing systems, predictive analytics and public-sector platforms. My focus has been building reliable applications, integrating business systems and solving production challenges.</p>
+      <section id="skills">
+        <p class="eyebrow">02 · Technology stack</p>
+        <h2>My toolbox</h2>
+        <p class="section-intro">Technologies and practices reflected in my professional experience and current learning.</p>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Backend & APIs</h3>
+            <div class="tech-tiles">
+              <img src="assets/stack-tiles/csharp.svg" alt="C#">
+              <img src="assets/stack-tiles/dotnet.svg" alt=".NET">
+            </div>
+            <div class="chips"><span class="chip">ASP.NET</span><span class="chip">ASP.NET MVC</span><span class="chip">Web API</span><span class="chip">WCF</span><span class="chip">ASMX</span><span class="chip">ADO.NET</span><span class="chip">VB.NET</span><span class="chip">SOAP / REST</span></div>
+          </article>
+          <article class="skill-card">
+            <h3>Database & integration</h3>
+            <div class="tech-tiles">
+              <img src="assets/stack-tiles/sqlserver.svg" alt="SQL Server">
+            </div>
+            <div class="chips"><span class="chip">T-SQL</span><span class="chip">Stored Procedures</span><span class="chip">Views</span><span class="chip">Query Optimization</span><span class="chip">SAP BW / ECC</span><span class="chip">MySQL · Exposure</span><span class="chip">Oracle · Exposure</span></div>
+          </article>
+          <article class="skill-card">
+            <h3>Frontend</h3>
+            <div class="tech-tiles">
+              <img src="assets/stack-tiles/javascript.svg" alt="JavaScript">
+              <img src="assets/stack-tiles/html5.svg" alt="HTML5">
+              <img src="assets/stack-tiles/css3.svg" alt="CSS3">
+              <img src="assets/stack-tiles/bootstrap.svg" alt="Bootstrap">
+              <img src="assets/stack-tiles/jquery.svg" alt="jQuery">
+              <img src="assets/stack-tiles/react.svg" alt="React.js">
+            </div>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Bootstrap</span><span class="chip">JavaScript</span><span class="chip">jQuery</span><span class="chip">AJAX</span><span class="chip">React.js · Learning</span></div>
+          </article>
+          <article class="skill-card">
+            <h3>Cloud, delivery & tools</h3>
+            <div class="tech-tiles">
+              <img src="assets/stack-tiles/azure.svg" alt="Azure">
+              <img src="assets/stack-tiles/azuredevops.svg" alt="Azure DevOps">
+              <img src="assets/stack-tiles/git.svg" alt="Git">
+              <img src="assets/stack-tiles/github.svg" alt="GitHub">
+            </div>
+            <div class="chips"><span class="chip">IIS</span><span class="chip">SSMS</span><span class="chip">Azure DevOps</span><span class="chip">Git</span><span class="chip">TFS</span><span class="chip">SVN</span><span class="chip">Jira</span><span class="chip">ServiceNow</span><span class="chip">Unit Testing</span><span class="chip">UAT</span></div>
+          </article>
         </div>
+        <p class="skill-note">React.js is a current learning focus. My primary professional experience remains .NET application engineering and SQL Server.</p>
+      </section>
+
+      <section id="experience">
+        <p class="eyebrow">03 · Career</p>
+        <h2>Where I’ve worked</h2>
+        <p class="section-intro">A career across enterprise software, manufacturing systems, predictive analytics and public-sector platforms.</p>
         <div class="timeline">
           <article class="job">
             <div class="date">MAR 2022 — PRESENT</div>
@@ -775,7 +369,7 @@
               <h3>Tata Consultancy Services (TCS)</h3>
               <div class="position">System Engineer · .NET Developer · Bengaluru</div>
               <p>Developing and supporting MyAssignments, a three-tier enterprise application integrating SAP BW and SAP ECC data for business reporting. Responsible for C# and ASP.NET development, WCF/ASMX integrations, SQL Server optimization, production troubleshooting and deployment support. Leading and mentoring a team of seven developers.</p>
-              <div class="tags"><span class="tag">C#</span><span class="tag">.NET Framework</span><span class="tag">ASP.NET</span><span class="tag">WCF / ASMX</span><span class="tag">ADO.NET</span><span class="tag">SQL Server 2019</span><span class="tag">Azure DevOps</span><span class="tag">IIS</span></div>
+              <div class="tags"><span class="tag-chip">C#</span><span class="tag-chip">.NET Framework</span><span class="tag-chip">ASP.NET</span><span class="tag-chip">WCF / ASMX</span><span class="tag-chip">ADO.NET</span><span class="tag-chip">SQL Server 2019</span><span class="tag-chip">Azure DevOps</span><span class="tag-chip">IIS</span></div>
             </div>
           </article>
           <article class="job">
@@ -784,7 +378,7 @@
               <h3>ITC Infotech India Ltd.</h3>
               <div class="position">Associate IT Consultant · Pune</div>
               <p>Worked on KONE Manufacturing Execution System (DELMIA Apriso), supporting regression testing, UAT, SQL data validation and defect investigation to improve application quality.</p>
-              <div class="tags"><span class="tag">DELMIA Apriso</span><span class="tag">SQL Server</span><span class="tag">Regression Testing</span><span class="tag">UAT</span></div>
+              <div class="tags"><span class="tag-chip">DELMIA Apriso</span><span class="tag-chip">SQL Server</span><span class="tag-chip">Regression Testing</span><span class="tag-chip">UAT</span></div>
             </div>
           </article>
           <article class="job">
@@ -793,7 +387,7 @@
               <h3>CHETU India Pvt. Ltd.</h3>
               <div class="position">Software Engineer · Noida</div>
               <p>Developed and maintained C# and ASP.NET modules for Veptas Technology MGLD, a predictive analytics platform supporting loan decision accuracy and servicing surveillance. Contributed to technical design documentation and unit testing.</p>
-              <div class="tags"><span class="tag">C#</span><span class="tag">ASP.NET</span><span class="tag">SQL Server</span><span class="tag">Technical Design</span></div>
+              <div class="tags"><span class="tag-chip">C#</span><span class="tag-chip">ASP.NET</span><span class="tag-chip">SQL Server</span><span class="tag-chip">Technical Design</span></div>
             </div>
           </article>
           <article class="job">
@@ -802,196 +396,129 @@
               <h3>CSM Technologies</h3>
               <div class="position">Software Engineer · Bhubaneswar</div>
               <p>Built and maintained government application modules across PHED Bihar, TMIS Odisha and I3MS Odisha, working with C#, VB.NET, ASP.NET MVC and SQL Server.</p>
-              <div class="tags"><span class="tag">C#</span><span class="tag">VB.NET</span><span class="tag">ASP.NET MVC</span><span class="tag">SQL Server</span></div>
+              <div class="tags"><span class="tag-chip">C#</span><span class="tag-chip">VB.NET</span><span class="tag-chip">ASP.NET MVC</span><span class="tag-chip">SQL Server</span></div>
             </div>
           </article>
         </div>
       </section>
 
-      <section id="skills">
-        <div class="section-head">
-          <div class="kicker">03 / Technology stack</div>
-          <h2>My Stack</h2>
-          <p>The technologies I use across enterprise .NET development, web interfaces, data and delivery.</p>
+      <section id="projects">
+        <p class="eyebrow">04 · Selected work</p>
+        <h2>Projects I’ve contributed to</h2>
+        <p class="section-intro">Selected enterprise systems from my professional experience. Client-specific details are kept at a high level.</p>
+        <div class="project-grid">
+          <article class="project">
+            <span class="project-type">Enterprise business application · TCS</span>
+            <h3>MyAssignments</h3>
+            <p>Three-tier enterprise application for business reporting. Integrated SAP BW and SAP ECC data through WCF/ASMX services; developed and optimized SQL Server queries, stored procedures and views; supported Azure DevOps builds and deployments.</p>
+            <div class="stack">C# · ASP.NET · WCF/ASMX · ADO.NET · SQL Server</div>
+          </article>
+          <article class="project">
+            <span class="project-type">Manufacturing execution · ITC Infotech</span>
+            <h3>KONE MES — DELMIA Apriso</h3>
+            <p>Contributed regression and UAT scripts, SQL Server validation of production data and defect investigation for a manufacturing execution system.</p>
+            <div class="stack">DELMIA Apriso · SQL Server · Regression · UAT</div>
+          </article>
+          <article class="project">
+            <span class="project-type">Predictive analytics · CHETU</span>
+            <h3>Veptas Technology MGLD</h3>
+            <p>Developed C# and ASP.NET modules for loan decision accuracy and servicing surveillance; contributed to technical design documentation and unit testing.</p>
+            <div class="stack">C# · ASP.NET · SQL Server · Unit Testing</div>
+          </article>
+          <article class="project">
+            <span class="project-type">Public services · CSM Technologies</span>
+            <h3>PHED Bihar</h3>
+            <p>Developed and maintained application modules supporting the rural water-supply system.</p>
+            <div class="stack">C# · VB.NET · ASP.NET MVC · SQL Server</div>
+          </article>
+          <article class="project">
+            <span class="project-type">Public services · CSM Technologies</span>
+            <h3>TMIS Odisha</h3>
+            <p>Worked on a web and mobile system for tubewell installation, maintenance and grievance tracking.</p>
+            <div class="stack">ASP.NET · C# · SQL Server</div>
+          </article>
+          <article class="project">
+            <span class="project-type">Public services · CSM Technologies</span>
+            <h3>I3MS Odisha</h3>
+            <p>Contributed to development and maintenance of the Integrated Mines and Minerals Management System.</p>
+            <div class="stack">C# · ASP.NET MVC · SQL Server</div>
+          </article>
         </div>
-        <div class="tech-grid" aria-label="Technology stack">
-          <div class="tech-tile"><img src="assets/stack-tiles/csharp.svg" width="116" height="88" alt="C#" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/dotnet.svg" width="116" height="88" alt=".NET" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/javascript.svg" width="116" height="88" alt="JavaScript" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/html5.svg" width="116" height="88" alt="HTML5" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/css3.svg" width="116" height="88" alt="CSS3" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/bootstrap.svg" width="116" height="88" alt="Bootstrap" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/jquery.svg" width="116" height="88" alt="jQuery" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/react.svg" width="116" height="88" alt="React.js" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/sqlserver.svg" width="116" height="88" alt="SQL Server" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/mysql.svg" width="116" height="88" alt="MySQL" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/oracle.svg" width="116" height="88" alt="Oracle" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/azure.svg" width="116" height="88" alt="Azure" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/azuredevops.svg" width="116" height="88" alt="Azure DevOps" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/git.svg" width="116" height="88" alt="Git" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/github.svg" width="116" height="88" alt="GitHub" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/visualstudio.svg" width="116" height="88" alt="Visual Studio" loading="lazy" decoding="async"></div>
-          <div class="tech-tile"><img src="assets/stack-tiles/vscode.svg" width="116" height="88" alt="VS Code" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="tech-details">
-          <h3>Frameworks, integration &amp; delivery</h3>
-          <div class="tags tech-tags">
-            <span class="tag">ASP.NET</span><span class="tag">ASP.NET MVC</span><span class="tag">Web API</span>
-            <span class="tag">WCF</span><span class="tag">ASMX</span><span class="tag">ADO.NET</span>
-            <span class="tag">VB.NET</span><span class="tag">SOAP / REST</span><span class="tag">T-SQL</span>
-            <span class="tag">Stored Procedures</span><span class="tag">Views</span><span class="tag">Query Optimization</span>
-            <span class="tag">IIS</span><span class="tag">SSMS</span><span class="tag">CI/CD</span>
-            <span class="tag">TFS</span><span class="tag">SVN</span><span class="tag">Jira</span>
-            <span class="tag">ServiceNow</span><span class="tag">Unit Testing</span><span class="tag">UAT</span>
-          </div>
-        </div>
-        <p class="stack-note">MySQL and Oracle are areas of exposure. React.js is included in my frontend toolkit and ongoing practice; my core professional experience is in .NET and SQL Server.</p>
+        <div class="note">My professional project code is client-owned and is not published publicly. My <a href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener noreferrer">JavaScript practice repository</a> contains personal learning exercises.</div>
       </section>
 
-      <section id="projects">
-        <div class="section-head">
-          <div class="kicker">04 / Selected work</div>
-          <h2>Building</h2>
-          <p>Selected enterprise systems from my professional experience. Client-specific details are kept at a high level.</p>
-        </div>
-        <div class="building-table-wrap">
-          <table class="building-table">
-            <thead>
-              <tr><th scope="col">Project</th><th scope="col">Area</th><th scope="col">Contribution</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>MyAssignments<span class="table-org">TCS</span></td>
-                <td>Enterprise business application</td>
-                <td>C# / ASP.NET three-tier application; SAP BW/ECC integration using WCF/ASMX; SQL Server query, stored procedure and view optimization; Azure DevOps builds and deployments.</td>
-              </tr>
-              <tr>
-                <td><strong>KONE MES</strong><span class="table-org">ITC Infotech</span></td>
-                <td>Manufacturing execution</td>
-                <td>DELMIA Apriso regression and UAT scripts; SQL Server validation of production data and defect tracing.</td>
-              </tr>
-              <tr>
-                <td>Veptas Technology MGLD<span class="table-org">CHETU</span></td>
-                <td>Predictive analytics</td>
-                <td>C# and ASP.NET modules for loan decision and servicing surveillance; design documentation and unit testing.</td>
-              </tr>
-              <tr>
-                <td><strong>PHED Bihar</strong><span class="table-org">CSM Technologies</span></td>
-                <td>Government / public services</td>
-                <td>C#, VB.NET and ASP.NET MVC development and maintenance for the rural water-supply system.</td>
-              </tr>
-              <tr>
-                <td><strong>TMIS Odisha</strong><span class="table-org">CSM Technologies</span></td>
-                <td>Government / public services</td>
-                <td>Web and mobile system for tubewell installation, maintenance and grievance tracking.</td>
-              </tr>
-              <tr>
-                <td><strong>I3MS Odisha</strong><span class="table-org">CSM Technologies</span></td>
-                <td>Government / public services</td>
-                <td>Development and maintenance for the Integrated Mines and Minerals Management System.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note">Alongside my professional project work, I maintain a separate <a href="https://github.com/sumandfs/Javascript" target="_blank" rel="noopener">JavaScript practice repository</a> for fundamentals and coding exercises.</div>
-      </section>
       <section id="activity">
-        <div class="section-head">
-          <div class="kicker">05 / GitHub activity</div>
-          <h2>Activity</h2>
-          <p>Recent public contribution activity from my GitHub profile.</p>
-        </div>
+        <p class="eyebrow">05 · GitHub activity</p>
+        <h2>Recent activity</h2>
+        <p class="section-intro">Public contribution activity from my GitHub account.</p>
         <div class="activity-card">
           <img src="https://github-readme-activity-graph.vercel.app/graph?username=sumandfs&amp;bg_color=ffffff&amp;color=24292f&amp;line=0969da&amp;point=0969da&amp;area=true&amp;hide_border=true&amp;radius=8" alt="GitHub contribution activity graph for sumandfs" loading="lazy" decoding="async">
         </div>
-        <p class="activity-link"><a href="https://github.com/sumandfs" target="_blank" rel="noopener">View my GitHub profile and contributions ↗</a></p>
       </section>
 
-
       <section id="education">
-        <div class="section-head">
-          <div class="kicker">05 / Education</div>
-          <h2>Academic background</h2>
-        </div>
-        <article class="panel education">
+        <p class="eyebrow">06 · Education</p>
+        <h2>Academic background</h2>
+        <article class="education-card">
           <div>
             <h3>Bachelor of Technology — Electronics and Telecommunication Engineering</h3>
             <p>Balasore College of Engineering and Technology · BPUT, Odisha</p>
             <p>CGPA: 7.1 / 10</p>
           </div>
-          <div class="year">2009 — 2013</div>
+          <div class="education-year">2009 — 2013</div>
         </article>
       </section>
 
       <section id="contact">
-        <div class="section-head">
-          <div class="kicker">06 / Contact</div>
-          <h2>Let’s connect.</h2>
-          <p>Open to conversations about senior .NET development, enterprise application engineering, API and system integration, and backend ownership.</p>
-        </div>
+        <p class="eyebrow">07 · Contact</p>
+        <h2>Let’s connect.</h2>
+        <p class="section-intro">Open to conversations about senior .NET development, enterprise application engineering, API and system integration, and backend ownership.</p>
         <div class="contact-card">
-          <div>
-            <h3>Suman Kumar Das</h3>
-            <p><a href="mailto:dassumandas1991@gmail.com">dassumandas1991@gmail.com</a></p>
-          </div>
-          <div class="actions">
-            <a class="button primary" href="mailto:dassumandas1991@gmail.com">Email me</a>
-            <a class="button" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a class="button" href="https://github.com/sumandfs" target="_blank" rel="noopener">GitHub ↗</a>
+          <div><h3>Suman Kumar Das</h3><p><a href="mailto:dassumandas1991@gmail.com">dassumandas1991@gmail.com</a> · Bengaluru, India</p></div>
+          <div class="cta">
+            <a class="btn primary" href="mailto:dassumandas1991@gmail.com">Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/suman-kumar-das-9866311b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/sumandfs" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>
       </section>
     </div>
   </main>
-  <footer><div class="wrap">© 2026 Suman Kumar Das · Built with HTML and CSS · Hosted on GitHub Pages</div></footer>
-    </div>
-  </div>
+
+  <footer><div class="wrap">© 2026 Suman Kumar Das · Built with HTML, CSS and JavaScript · Hosted on GitHub Pages</div></footer>
 
   <script>
     (() => {
       const root = document.documentElement;
-      const control = document.querySelector(".theme-control");
-      const toggle = document.getElementById("themeToggle");
-      const menu = document.getElementById("themeMenu");
-      const current = document.getElementById("themeCurrent");
-      if (!control || !toggle || !menu || !current) return;
-      const labels = { original: "Original", light: "Light", dark: "Dark" };
-      const closeMenu = () => {
-        menu.hidden = true;
-        toggle.setAttribute("aria-expanded", "false");
-      };
-      const applyTheme = (theme, save = true) => {
-        const selected = Object.prototype.hasOwnProperty.call(labels, theme) ? theme : "original";
-        root.setAttribute("data-theme", selected);
-        current.textContent = labels[selected];
-        menu.querySelectorAll("[data-theme-choice]").forEach((item) => {
-          item.setAttribute("aria-checked", String(item.dataset.themeChoice === selected));
+      const themeButtons = document.querySelectorAll("[data-theme]");
+      const validThemes = ["light", "dark", "midnight"];
+      const applyTheme = (theme, persist = true) => {
+        const selected = validThemes.includes(theme) ? theme : "light";
+        root.dataset.theme = selected;
+        themeButtons.forEach(button => {
+          button.setAttribute("aria-pressed", String(button.dataset.theme === selected));
         });
-        if (save) {
+        if (persist) {
           try { localStorage.setItem("suman-portfolio-theme", selected); } catch (_) {}
         }
       };
-      let savedTheme = "original";
-      try { savedTheme = localStorage.getItem("suman-portfolio-theme") || "original"; } catch (_) {}
-      applyTheme(savedTheme, false);
-      toggle.addEventListener("click", () => {
-        menu.hidden = !menu.hidden;
-        toggle.setAttribute("aria-expanded", String(!menu.hidden));
-      });
-      menu.querySelectorAll("[data-theme-choice]").forEach((item) => {
-        item.addEventListener("click", () => {
-          applyTheme(item.dataset.themeChoice);
-          closeMenu();
+      themeButtons.forEach(button => button.addEventListener("click", () => applyTheme(button.dataset.theme)));
+
+      const menuButton = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", () => {
+          const open = navLinks.classList.toggle("open");
+          menuButton.setAttribute("aria-expanded", String(open));
+          menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
         });
-      });
-      document.addEventListener("click", (event) => {
-        if (!control.contains(event.target)) closeMenu();
-      });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenu();
-      });
+        navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "Open navigation menu");
+        }));
+      }
     })();
   </script>
-
 </body>
 </html>
